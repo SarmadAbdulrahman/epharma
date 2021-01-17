@@ -4,18 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'staticUi/Darwer.dart';
+
 class HomeView extends StatelessWidget {
  // final LoginController _loginController = Get.find();
   final HomeController _homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     //print(_loginController.emailTextController.text);
-
-    int _selectedDestination = 0;
-
-
-
-
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -25,61 +21,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
 
-      drawer: Drawer(
-
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Header',
-               // style: textTheme.headline6,
-              ),
-            ),
-            Divider(
-              height: 1,
-              thickness: 1,
-            ),
-            ListTile(
-              leading: Icon(Icons.favorite),
-              title: Text('Item 1'),
-              selected: _selectedDestination == 0,
-            //  onTap: () => selectDestination(0),
-            ),
-            ListTile(
-              leading: Icon(Icons.delete),
-              title: Text('Item 2'),
-              selected: _selectedDestination == 1,
-            //  onTap: () => selectDestination(1),
-            ),
-            ListTile(
-              leading: Icon(Icons.label),
-              title: Text('Item 3'),
-              selected: _selectedDestination == 2,
-            //  onTap: () => selectDestination(2),
-            ),
-            Divider(
-              height: 1,
-              thickness: 1,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Label',
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.bookmark),
-              title: Text('Item A'),
-              selected: _selectedDestination == 3,
-            //  onTap: () => selectDestination(3),
-            ),
-          ],
-        ),
-      ),
-
+      drawer: MainDrawer(),
       body: Container(
         padding: EdgeInsets.all(16),
         child: Column(
