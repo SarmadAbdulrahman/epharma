@@ -1,8 +1,28 @@
 
+import 'package:epharmalyical/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
+
+
+
+selectDestination(code)
+{
+   switch(code)
+   {
+
+     case 1 : Get.offAll(LoginView());break;
+     case 2: Get.offAll(LoginView());break;
+
+
+
+   }
+
+}
+
 Widget  MainDrawer () {
+
 
   int _selectedDestination=0;
   return Drawer(
@@ -22,21 +42,21 @@ Widget  MainDrawer () {
         ListTile(
           leading: Icon(Icons.favorite),
           title: Text('Item 1'),
-       //   selected: _selectedDestination == 0,
-        //  onTap: () => selectDestination(0),
+          selected: _selectedDestination == 0,
+          onTap: () => selectDestination(0),
         ),
         ListTile(
           leading: Icon(Icons.delete),
           title: Text('Item 2'),
-        //  selected: _selectedDestination == 1,
-        //  onTap: () => selectDestination(1),
+          selected: _selectedDestination == 1,
+          onTap: () => selectDestination(1),
         ),
         ListTile(
           leading: Icon(Icons.label),
           title: Text('Item 3'),
 
-          //   selected: _selectedDestination == 2,
-        //  onTap: () => selectDestination(2),
+          selected: _selectedDestination == 2,
+          onTap: () => selectDestination(2),
         ),
         Divider(
           height: 1,
@@ -52,7 +72,7 @@ Widget  MainDrawer () {
           leading: Icon(Icons.bookmark),
           title: Text('Item A'),
           selected: _selectedDestination == 3,
-          onTap: () => print("ssss"),
+          onTap: () => selectDestination(1),
         ),
       ],
     ),
