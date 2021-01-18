@@ -96,12 +96,12 @@ class HomeView extends StatelessWidget {
                   _verticalD(),
                   GestureDetector(
                     onTap: () {
-                      /* Navigator.push(
+                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => Item_Screen(
                                 toolbarname: 'Fruits & Vegetables',
-                              )));*/
+                              )));
                     },
                     child: Text(
                       'Best value',
@@ -175,7 +175,7 @@ class HomeView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SizedBox(
-                            height: 180.0,
+                            height: 140.0,
                             child: Stack(
                               children: <Widget>[
                                 Positioned.fill(
@@ -219,7 +219,7 @@ class HomeView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SizedBox(
-                            height: 180.0,
+                            height: 140.0,
                             child: Stack(
                               children: <Widget>[
                                 Positioned.fill(
@@ -263,7 +263,7 @@ class HomeView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SizedBox(
-                            height: 180.0,
+                            height: 140.0,
                             child: Stack(
                               children: <Widget>[
                                 Positioned.fill(
@@ -307,7 +307,7 @@ class HomeView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SizedBox(
-                            height: 180.0,
+                            height: 140.0,
                             child: Stack(
                               children: <Widget>[
                                 Positioned.fill(

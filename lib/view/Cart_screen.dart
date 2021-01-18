@@ -31,32 +31,32 @@ class Cart extends State<Cart_screen> {
         itemImage: 'images/grapes.jpg',
         itemName: 'Black Grape',
         itemQun: 'Qty:1',
-        itemPrice: '\₹ 100'),
+        itemPrice: '\$ 100'),
     Item(
         itemImage: 'images/tomato.jpg',
         itemName: 'Tomato',
         itemQun: 'Qty:3',
-        itemPrice: '\₹ 112'),
+        itemPrice: '\$ 112'),
     Item(
         itemImage: 'images/guava.jpg',
         itemName: 'Guava',
         itemQun: 'Qty:2',
-        itemPrice: '\₹ 105'),
+        itemPrice: '\$ 105'),
     Item(
         itemImage: 'images/kiwi.jpg',
         itemName: 'Kiwi',
         itemQun: 'Qty:1',
-        itemPrice: '\₹ 90'),
+        itemPrice: '\$ 90'),
     Item(
         itemImage: 'images/lemons.jpg',
         itemName: 'Lemon',
         itemQun: 'Qty:2',
-        itemPrice: '\₹ 70'),
+        itemPrice: '\$ 70'),
     Item(
         itemImage: 'images/apple.jpg',
         itemName: 'Apple',
         itemQun: 'Qty:1',
-        itemPrice: '\₹ 50'),
+        itemPrice: '\$ 50'),
   ];
   String toolbarname = 'My Cart (4)';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -142,21 +142,7 @@ class Cart extends State<Cart_screen> {
                   )
               );*/
                 },
-                child: Stack(
-                  children: <Widget>[
-                    IconButton(
-                        icon: Icon(
-                          Icons.home,
-                          color: Colors.amber,
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Item_Screen()));
-                        }),
-                  ],
-                ),
+
               ),
             ),
           )
@@ -169,7 +155,7 @@ class Cart extends State<Cart_screen> {
               child: Card(
                   child: Container(
                       padding:
-                      const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                      const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
                       child: GestureDetector(
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -408,7 +394,7 @@ class Cart extends State<Cart_screen> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '\₹ 524',
+                      '\$ 524',
                       style: TextStyle(fontSize: 17.0, color: Colors.black54),
                     ),
                     Padding(
