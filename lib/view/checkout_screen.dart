@@ -184,7 +184,7 @@ class check_out extends State<Checkout> {
                     ),
                   ),
                   Container(
-                    height: 165.0,
+                    height: 140.0,
                     width: 200.0,
                     margin: EdgeInsets.all(7.0),
                     child: Card(
@@ -370,7 +370,7 @@ class check_out extends State<Checkout> {
                     ),
                   ),
                   Container(
-                    height: 130.0,
+                    height: 180.0,
                     width: 200.0,
                     margin: EdgeInsets.all(7.0),
                     child: Card(
@@ -518,7 +518,7 @@ class check_out extends State<Checkout> {
                   })),
           Container(
               alignment: Alignment.bottomLeft,
-              height: 50.0,
+              height: 40.0,
               child: Card(
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
