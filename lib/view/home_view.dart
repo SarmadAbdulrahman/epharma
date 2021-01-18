@@ -28,37 +28,43 @@ class HomeView extends StatelessWidget {
 
   List<Photo> photos = <Photo>[
     Photo(
-      assetName: 'images/veg.jpg',
-      title: 'Fruits & Vegetables',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
     ),
     Photo(
-      assetName: 'images/frozen.jpg',
-      title: 'Frozen Veg',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
     ),
     Photo(
-      assetName: 'images/bev.jpg',
-      title: 'Beverages',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
     ),
     Photo(
-      assetName: 'images/brand_f.jpg',
-      title: 'Brannded Food',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
     ),
     Photo(
-      assetName: 'images/be.jpg',
-      title: 'Beauty & Personal Care',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
     ),
     Photo(
-      assetName: 'images/home.jpg',
-      title: 'Home Care & Fashion',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
     ),
     Photo(
-      assetName: 'images/nonveg.jpg',
-      title: 'Non Veg',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
     ),
     Photo(
-      assetName: 'images/eggs.jpg',
-      title: 'Dairy, Bakery & Eggs',
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
     ),
+
+
+
+
+
+
   ];
 
   final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
@@ -100,7 +106,7 @@ class HomeView extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Item_Screen(
-                                toolbarname: 'Fruits & Vegetables',
+                                toolbarname: '  Drag 1',
                               )));
                     },
                     child: Text(
@@ -118,7 +124,7 @@ class HomeView extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Item_Screen(
-                                toolbarname: 'Fruits & Vegetables',
+                                toolbarname: 'Drag 13',
                               )));
                     },
                     child: Text(
@@ -139,7 +145,7 @@ class HomeView extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Item_Screen(
-                                    toolbarname: 'Fruits & Vegetables',
+                                    toolbarname: 'Drag 12',
                                   )));
                         },
                         child: Text(
@@ -159,7 +165,7 @@ class HomeView extends StatelessWidget {
                   )
                 ]),
             Container(
-              height: 188.0,
+              height: 150.0,
               margin: EdgeInsets.only(left: 5.0),
               child:
                   ListView(scrollDirection: Axis.horizontal, children: <Widget>[
@@ -354,7 +360,7 @@ class HomeView extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Item_Screen(
-                                  toolbarname: 'Fruits & Vegetables',
+                                  toolbarname: 'Drag 6',
                                 )));
                       },
                       child: Text(
@@ -372,7 +378,7 @@ class HomeView extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Item_Screen(
-                                  toolbarname: 'Fruits & Vegetables',
+                                  toolbarname: 'Drag 1',
                                 )));
                       },
                       child: Text(
@@ -392,7 +398,7 @@ class HomeView extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Item_Screen(
-                                      toolbarname: 'Fruits & Vegetables',
+                                      toolbarname: 'Drag 4',
                                     )));
                           },
                           child: Text(
@@ -409,11 +415,12 @@ class HomeView extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.topCenter,
-              height: 700.0,
+              height: 800.0,
               child: GridView.builder(
                   itemCount: photos.length,
-                  primary: false,
-                  physics: NeverScrollableScrollPhysics(),
+                  primary: true,
+                  shrinkWrap:true,
+                //  physics: NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(10.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
@@ -424,7 +431,7 @@ class HomeView extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Item_Screen(
-                                    toolbarname: 'Fruits & Vegetables',
+                                    toolbarname: photos[index].title,
                                   )));
                         },
                         child: Container(
@@ -462,7 +469,7 @@ class HomeView extends StatelessWidget {
                                                         builder: (context) =>
                                                             Item_Screen(
                                                               toolbarname:
-                                                              'Fruits & Vegetables',
+                                                              'Drag 1',
                                                             )));
                                               },
                                               child: Text(

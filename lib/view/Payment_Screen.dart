@@ -280,7 +280,7 @@ class payment extends State<Patment> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '\₹ 524',
+                      '\$ 524',
                       style: TextStyle(fontSize: 17.0, color: Colors.black54),
                     ),
                     Padding(
