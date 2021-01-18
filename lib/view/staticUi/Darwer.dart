@@ -12,7 +12,7 @@ selectDestination(code)
    switch(code)
    {
 
-     case 1 : Get.offAll(LoginView());break;
+     case 1 :Get.offAll(LoginView());break;
      case 2: Get.offAll(LoginView());break;
 
 

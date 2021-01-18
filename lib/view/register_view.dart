@@ -1,11 +1,11 @@
 import 'package:epharmalyical/controller/login_controller.dart';
-import 'package:epharmalyical/view/register_view.dart';
+import 'package:epharmalyical/controller/reigster_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginView extends StatelessWidget {
-  final LoginController _loginController = Get.put(LoginController());
+class RegisterView extends StatelessWidget {
+  final RegisterController _registerControllerController = Get.put(RegisterController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          'Ticket system',
+          'Create Accounts',
         ),
       ),
       body: Container(
@@ -24,7 +24,43 @@ class LoginView extends StatelessWidget {
           child: Column(
             children: <Widget>[
               TextFormField(
-                controller: _loginController.emailTextController,
+                controller: _registerControllerController.UserNameTextController,
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  hintText: 'User Name',
+                  hintStyle: GoogleFonts.exo2(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 0,
+                    ),
+                  ),
+                ),
+                style: GoogleFonts.exo2(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal,
+                ),
+                validator: (value) =>
+                value.trim().isEmpty ? 'user name required' : null,
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: _registerControllerController.emailTextController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],
@@ -56,11 +92,12 @@ class LoginView extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
                 validator: (value) =>
-                    value.trim().isEmpty ? 'Mobile required' : null,
+                value.trim().isEmpty ? 'Mobile required' : null,
               ),
+
               SizedBox(height: 16),
               TextFormField(
-                controller: _loginController.passwordTextController,
+                controller: _registerControllerController.passwordTextController,
                 keyboardType: TextInputType.text,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -88,7 +125,7 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 validator: (value) =>
-                    value.trim().isEmpty ? 'Password required' : null,
+                value.trim().isEmpty ? 'Password required' : null,
                 style: GoogleFonts.exo2(
                   fontSize: 16,
                   color: Colors.black,
@@ -105,7 +142,7 @@ class LoginView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Text(
-                    'LOGIN',
+                    'Create',
                     style: GoogleFonts.exo2(
                       fontSize: 20,
                       color: Colors.white,
@@ -114,28 +151,10 @@ class LoginView extends StatelessWidget {
                   ),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      _loginController.apiLogin();
+                      _registerControllerController.apiRegister();
                     }
                   }),
 
-              SizedBox(height: 16),
-              MaterialButton(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  minWidth: Get.width / 2,
-                  child: Text(
-                    'Create Account',
-                    style: GoogleFonts.exo2(
-                      fontSize: 20,
-                      color: Colors.deepOrangeAccent,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: () {
-                    // Get.
-                    Get.to(RegisterView());
-
-                  })
             ],
           ),
         ),

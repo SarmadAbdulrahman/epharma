@@ -4,25 +4,40 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-class LoginController extends GetxController {
+class RegisterController extends GetxController {
   TextEditingController emailTextController;
+  TextEditingController UserNameTextController;
   TextEditingController passwordTextController;
 
 
   @override
   void onInit() {
     emailTextController = TextEditingController();
+    UserNameTextController = TextEditingController();
     passwordTextController = TextEditingController();
     super.onInit();
   }
 
-  void apiLogin() async {
+
+
+
+
+  void apiRegister() async {
     Get.dialog(Center(child: CircularProgressIndicator()),
         barrierDismissible: false);
-    Request request = Request(url: urlLogin, body: {
-       'mobile': emailTextController.text,
-       'password': passwordTextController.text
+    Request request = Request(url: urlRegister, body: {
+      'mobile': emailTextController.text,
+      'username': UserNameTextController.text,
+      'password': passwordTextController.text,
+      'name':UserNameTextController.text,
+      'address':UserNameTextController.text,
+      'latitude':'32.2',
+      'longitude':'32.2',
+      'nearPoint':'tsts',
+      'PointType':'DragStore',
+      'email':'${emailTextController.text}@gmail.com'
     });
+  //  print('${emailTextController}@gmail.com');
     request.post().then((value) {
       if(value.statusCode==200){
 
@@ -31,15 +46,16 @@ class LoginController extends GetxController {
       }
 
       else {
+        print(value.body);
         Get.back();
         Get.dialog(
             Center(child:
             AlertDialog(
               title: new Text("Warring"),
-              content: new Text("check your password or moible"),
+              content: new Text("please re-check again"),
             )
 
-        ));
+            ));
 
       }
 
@@ -49,6 +65,7 @@ class LoginController extends GetxController {
   @override
   void onClose() {
     emailTextController?.dispose();
+    UserNameTextController?.dispose();
     passwordTextController?.dispose();
     super.onClose();
   }
