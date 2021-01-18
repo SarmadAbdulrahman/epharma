@@ -63,6 +63,318 @@ class HomeView extends StatelessWidget {
 
 
 
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore1',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore2',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore8',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore3',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore4',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore5',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore6',
+    ),
+    Photo(
+      assetName: 'images/drag1.jpg',
+      title: 'DragStore7',
+    ),
+
+
+
 
 
   ];
@@ -420,7 +732,7 @@ class HomeView extends StatelessWidget {
                   itemCount: photos.length,
                   primary: true,
                   shrinkWrap:true,
-                //  physics: NeverScrollableScrollPhysics(),
+                 // physics: NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(10.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),

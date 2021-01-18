@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          'Ticket system',
+          'Login',
         ),
       ),
       body: Container(
