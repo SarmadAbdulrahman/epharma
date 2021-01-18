@@ -184,7 +184,7 @@ class check_out extends State<Checkout> {
                     ),
                   ),
                   Container(
-                    height: 140.0,
+                    height: 130.0,
                     width: 200.0,
                     margin: EdgeInsets.all(7.0),
                     child: Card(
@@ -199,7 +199,7 @@ class check_out extends State<Checkout> {
                                     left: 12.0,
                                     top: 5.0,
                                     right: 0.0,
-                                    bottom: 5.0),
+                                    bottom: 1.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
@@ -241,7 +241,7 @@ class check_out extends State<Checkout> {
                                           left: 00.0,
                                           top: 05.0,
                                           right: 0.0,
-                                          bottom: 5.0),
+                                          bottom: 1.0),
                                       child: Row(
                                         crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -292,7 +292,7 @@ class check_out extends State<Checkout> {
                                     left: 12.0,
                                     top: 5.0,
                                     right: 0.0,
-                                    bottom: 5.0),
+                                    bottom: 1.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
@@ -334,7 +334,7 @@ class check_out extends State<Checkout> {
                                           left: 00.0,
                                           top: 05.0,
                                           right: 0.0,
-                                          bottom: 5.0),
+                                          bottom: 1.0),
                                       child: Row(
                                         crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -370,7 +370,7 @@ class check_out extends State<Checkout> {
                     ),
                   ),
                   Container(
-                    height: 180.0,
+                    height: 130.0,
                     width: 200.0,
                     margin: EdgeInsets.all(7.0),
                     child: Card(
@@ -427,7 +427,7 @@ class check_out extends State<Checkout> {
                                           left: 00.0,
                                           top: 05.0,
                                           right: 0.0,
-                                          bottom: 5.0),
+                                          bottom: 1.0),
                                       child: Row(
                                         crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -518,7 +518,7 @@ class check_out extends State<Checkout> {
                   })),
           Container(
               alignment: Alignment.bottomLeft,
-              height: 40.0,
+              height: 50.0,
               child: Card(
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
@@ -533,7 +533,7 @@ class check_out extends State<Checkout> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '\₹ 524',
+                      '\$ 524',
                       style: TextStyle(fontSize: 17.0, color: Colors.black54),
                     ),
                     Padding(
