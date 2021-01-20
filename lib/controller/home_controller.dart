@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   var item = 0.obs;
   @override
   void onInit() {
-    _apiGetUserList();
+   // _apiGetUserList();
     _apiProductList();
     super.onInit();
   }
