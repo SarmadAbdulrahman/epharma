@@ -1,18 +1,15 @@
+import 'package:epharmalyical/controller/home_controller.dart';
 import 'package:epharmalyical/view/Item_Screen.dart';
 import 'package:epharmalyical/view/checkout_screen.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 enum DialogDemoAction {
   cancel,
   discard,
   disagree,
   agree,
-}
-
-class Cart_screen extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => Cart();
 }
 
 class Item {
@@ -24,7 +21,12 @@ class Item {
   Item({this.itemImage, this.itemName, this.itemQun, this.itemPrice});
 }
 
-class Cart extends State<Cart_screen> {
+
+class Cart_screen extends StatelessWidget {
+
+
+  final HomeController _homeController = Get.put(HomeController());
+
   List<Item> itemList = <Item>[
     Item(
         itemImage: 'images/grapes.jpg',
@@ -60,17 +62,7 @@ class Cart extends State<Cart_screen> {
   String toolbarname = 'My Cart (4)';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  IconData _backIcon() {
-    switch (Theme.of(context).platform) {
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-        return Icons.arrow_back;
-      case TargetPlatform.iOS:
-        return Icons.arrow_back_ios;
-    }
-    assert(false);
-    return null;
-  }
+
 
   String pincode;
 
@@ -97,6 +89,19 @@ class Cart extends State<Cart_screen> {
           return Icons.remove_circle;
         case TargetPlatform.iOS:
           return Icons.remove_circle;
+      }
+      assert(false);
+      return null;
+    }
+
+
+    IconData _backIcon() {
+      switch (Theme.of(context).platform) {
+        case TargetPlatform.android:
+        case TargetPlatform.fuchsia:
+          return Icons.arrow_back;
+        case TargetPlatform.iOS:
+          return Icons.arrow_back_ios;
       }
       assert(false);
       return null;
@@ -235,7 +240,7 @@ class Cart extends State<Cart_screen> {
                       alignment: Alignment.topLeft,
                       child: Column(
                         children: <Widget>[
-                          Container(
+                          Obx(()=>  Container(
                               alignment: Alignment.topLeft,
                               child: Row(
                                 children: <Widget>[
@@ -317,7 +322,7 @@ class Cart extends State<Cart_screen> {
                                                                   .amber
                                                                   .shade500),
                                                           onPressed: () {
-                                                            // item = item + 1;
+                                                            _homeController.item = _homeController.item + 1;
                                                           },
                                                         ),
                                                         Container(
@@ -326,7 +331,7 @@ class Cart extends State<Cart_screen> {
                                                                   left: 2.0),
                                                         ),
                                                         Text(
-                                                          item.toString(),
+                                                          _homeController.item.toString(),
                                                           /*     style: descriptionStyle.copyWith(
                                                    fontSize: 20.0,
                                                    color: Colors.black87),*/
@@ -343,12 +348,11 @@ class Cart extends State<Cart_screen> {
                                                                   .amber
                                                                   .shade500),
                                                           onPressed: () {
-                                                            /* if(item<0){
-
-                                                 }
-                                                 else{
-                                                   item = item -1;
-                                                 }*/
+                                                            if (_homeController.item < 0) {
+                                                              _homeController.item = _homeController.item + 1;
+                                                            } else {
+                                                              _homeController.item = _homeController.item - 1;
+                                                            }
                                                           },
                                                         ),
                                                       ],
@@ -371,7 +375,7 @@ class Cart extends State<Cart_screen> {
                                       )),
                                 ],
                               )),
-                        ],
+                          )],
                       ),
                     ));
                   })),

@@ -12,6 +12,6 @@ class Request {
     return http.post(urlBase + url, body: body).timeout(Duration(minutes: 2));
   }
   Future<http.Response> get() {
-    return http.get(url2Base + url).timeout(Duration(minutes: 2));
+    return http.get(url3Base + url).timeout(Duration(minutes: 2));
   }
 }
