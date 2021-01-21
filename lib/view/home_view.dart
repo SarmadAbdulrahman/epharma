@@ -728,8 +728,8 @@ class HomeView extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               height: 800.0,
-              child: GridView.builder(
-                  itemCount: photos.length,
+              child:Obx(()=> GridView.builder(
+                  itemCount: _homeController.Products.length,
                   primary: true,
                   shrinkWrap:true,
                  // physics: NeverScrollableScrollPhysics(),
@@ -743,7 +743,7 @@ class HomeView extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Item_Screen(
-                                    toolbarname: photos[index].title,
+                                    toolbarname: _homeController.Products[index].name,
                                   )));
                         },
                         child: Container(
@@ -762,7 +762,7 @@ class HomeView extends StatelessWidget {
                                         children: <Widget>[
                                           Positioned.fill(
                                               child: Image.asset(
-                                            photos[index].assetName,
+                                                _homeController.Products[index].image,
                                             fit: BoxFit.cover,
                                           )),
                                           Container(
@@ -785,7 +785,7 @@ class HomeView extends StatelessWidget {
                                                             )));
                                               },
                                               child: Text(
-                                                photos[index].title,
+                                                _homeController.Products[index].name,
                                                 style: TextStyle(
                                                     fontSize: 18.0,
                                                     color: Colors.white,
@@ -817,7 +817,7 @@ class HomeView extends StatelessWidget {
                             )));
                   }),
             )
-          ]),
+            )]),
         ),
       ),
     );

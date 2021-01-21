@@ -47,7 +47,7 @@ class HomeController extends GetxController {
 
     Request request = Request(url: products, body: null);
     request.get().then((value) {
-      print(value.body);
+     // print(value.body);
       Product _Product =
       Product.fromJson(json.decode(value.body));
       Products.value =_Product.data;
