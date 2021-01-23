@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
+ // var token="".obs;
 
 
   @override

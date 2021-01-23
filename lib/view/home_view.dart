@@ -26,6 +26,7 @@ class HomeView extends StatelessWidget {
 
   List list = ['12', '11'];
 
+/*
   List<Photo> photos = <Photo>[
     Photo(
       assetName: 'images/drag1.jpg',
@@ -373,13 +374,14 @@ class HomeView extends StatelessWidget {
       title: 'DragStore7',
     ),
 
-
-
-
-
   ];
+*/
 
-  final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
+
+
+
+
+//  final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
   static const double height = 366.0;
   String name = 'My Wishlist';
 
@@ -727,13 +729,13 @@ class HomeView extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.topCenter,
-              height: 800.0,
+              height: 400.0,
               child:Obx(()=> GridView.builder(
                   itemCount: _homeController.Products.length,
                   primary: true,
                   shrinkWrap:true,
                  // physics: NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(5.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
                   itemBuilder: (BuildContext context, int index) {
@@ -757,12 +759,12 @@ class HomeView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     SizedBox(
-                                      height: 152.0,
+                                      height: 140.0,
                                       child: Stack(
                                         children: <Widget>[
                                           Positioned.fill(
-                                              child: Image.asset(
-                                                _homeController.Products[index].image,
+                                              child: Image.network(
+                                                _homeController.Products[index].imagePath,
                                             fit: BoxFit.cover,
                                           )),
                                           Container(

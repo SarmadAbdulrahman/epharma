@@ -1,18 +1,15 @@
 
+import 'package:epharmalyical/controller/home_controller.dart';
+import 'package:epharmalyical/controller/item_controller.dart';
 import 'package:epharmalyical/view/Cart_screen.dart';
 import 'package:epharmalyical/view/item_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_range_slider/flutter_range_slider.dart' as rangeSlider;
+import 'package:get/get.dart';
+import 'package:epharmalyical/model/Items.dart' as Iteami;
 
-class Item_Screen extends StatefulWidget {
-  final String toolbarname;
 
-  Item_Screen({Key key, this.toolbarname}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => item(toolbarname);
-}
-
+/*
 class Item {
   final String itemname;
   final String imagename;
@@ -20,14 +17,26 @@ class Item {
 
   Item({this.itemname, this.imagename, this.itmprice});
 }
+*/
 
-class item extends State<Item_Screen> {
+
+class Item_Screen extends StatelessWidget {
+  final String toolbarname;
+
+  final ItemController _itemController = Get.put(ItemController());
+
+  Item_Screen({Key key, this.toolbarname}) : super(key: key);
+
+
+
   List list = ['12', '11'];
   bool checkboxValueA = true;
   bool checkboxValueB = false;
   bool checkboxValueC = false;
   VoidCallback _showBottomSheetCallback;
-  List<Item> itemList = <Item>[
+
+
+/*  List<Item> itemList = <Item>[
     Item(imagename: 'images/apple.jpg', itemname: 'Apple', itmprice: '\$10'),
     Item(imagename: 'images/tomato.jpg', itemname: 'Tomato', itmprice: '\$15'),
     Item(imagename: 'images/lemons.jpg', itemname: 'Lemon', itmprice: '\$25'),
@@ -46,12 +55,11 @@ class item extends State<Item_Screen> {
     Item(imagename: 'images/apple.jpg', itemname: 'Apple', itmprice: '\$10'),
     Item(imagename: 'images/grapes.jpg', itemname: 'Grapes', itmprice: '\$25'),
     Item(imagename: 'images/grapes.jpg', itemname: 'Grapes', itmprice: '\$25'),
-  ];
+  ];*/
   // String toolbarname = 'Fruiys & Vegetables';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String toolbarname;
 
-  item(this.toolbarname);
+ // item(this.toolbarname);
 
   @override
   Widget build(BuildContext context) {
@@ -165,20 +173,25 @@ class item extends State<Item_Screen> {
           Container(
             // height: 500.0,
             child: Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                childAspectRatio: (itemWidth / itemHeight),
+              child:Obx(()=> GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                itemCount: _itemController.items.length,
                 controller: ScrollController(keepScrollOffset: false),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 padding: const EdgeInsets.all(4.0),
-                children: itemList.map((Item photo) {
-                  return TravelDestinationItem(
-                    destination: photo,
+                itemBuilder:(BuildContext context, int index) {
+                  return   TravelDestinationItem(
+                    destination: _itemController.items[index],
                   );
-                }).toList(),
+                }
+
               ),
-            ),
+
+
+
+            )),
           )
         ],
       ),
@@ -241,7 +254,7 @@ class item extends State<Item_Screen> {
   double _lowerValue = 1.0;
   double _upperValue = 100.0;
 
-  void _visibilitymethod() {
+ /* void _visibilitymethod() {
     setState(() {
       if (a) {
         a = false;
@@ -251,19 +264,20 @@ class item extends State<Item_Screen> {
         mText = "Press to hide";
       }
     });
-  }
+  }*/
 
   List<RangeSliderData> rangeSliders;
   List<Widget> _buildRangeSliders() {
     List<Widget> children = <Widget>[];
     for (int index = 0; index < rangeSliders.length; index++) {
       children
-          .add(rangeSliders[index].build(context, (double lower, double upper) {
+          .add(rangeSliders[index].build(_scaffoldKey.currentContext, (double lower, double upper) {
         // adapt the RangeSlider lowerValue and upperValue
-        setState(() {
+       /* setState(() {
           rangeSliders[index].lowerValue = lower;
           rangeSliders[index].upperValue = upper;
-        });
+        });*/
+
       }));
       // Add an extra padding at the bottom of each RangeSlider
       children.add(SizedBox(height: 8.0));
@@ -273,10 +287,7 @@ class item extends State<Item_Screen> {
   }
 
   void _showBottomSheet() {
-    setState(() {
-      // disable the button
-      _showBottomSheetCallback = null;
-    });
+
     _scaffoldKey.currentState
         .showBottomSheet<Null>((BuildContext context) {
       final ThemeData themeData = Theme.of(context);
@@ -1087,12 +1098,12 @@ class item extends State<Item_Screen> {
     })
         .closed
         .whenComplete(() {
-      if (mounted) {
+    /*  if (mounted) {
         setState(() {
           // re-enable the button
           _showBottomSheetCallback = _showBottomSheet;
         });
-      }
+      }*/
     });
   }
 
@@ -1100,9 +1111,9 @@ class item extends State<Item_Screen> {
   bool switchValue = false;
 
   void handleRadioValueChanged(int value) {
-    setState(() {
+    /*setState(() {
       radioValue = value;
-    });
+    });*/
   }
 }
 
@@ -1112,7 +1123,7 @@ class TravelDestinationItem extends StatelessWidget {
         super(key: key);
 
   static const double height = 566.0;
-  final Item destination;
+  var destination;
   final ShapeBorder shape;
 
   @override
@@ -1131,7 +1142,7 @@ class TravelDestinationItem extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Item_Details()));
+                    MaterialPageRoute(builder: (context) => Item_Details(destination)));
               },
               child: Card(
                 shape: shape,
@@ -1140,14 +1151,14 @@ class TravelDestinationItem extends StatelessWidget {
                   children: <Widget>[
                     // photo and title
                     SizedBox(
-                      height: 150.0,
+                      height: 100.0,
                       child: Stack(
                         children: <Widget>[
                           Positioned.fill(
-                            child: Image.asset(
-                              destination.imagename,
+                            child: Image.network(
+                              destination.imagePath,
                               // package: destination.assetPackage,
-                              fit: BoxFit.scaleDown,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                           Container(
@@ -1165,7 +1176,7 @@ class TravelDestinationItem extends StatelessWidget {
                     Expanded(
                       child: Container(
                         padding:
-                        const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+                        const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                         child: DefaultTextStyle(
                           style: descriptionStyle,
                           child: Row(
@@ -1174,17 +1185,18 @@ class TravelDestinationItem extends StatelessWidget {
                             children: <Widget>[
                               // three line description
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
+                                padding: const EdgeInsets.only(bottom: 1.0),
                                 child: Text(
-                                  destination.itemname,
+                                  destination.name,
                                   style: descriptionStyle.copyWith(
-                                      color: Colors.black87),
+                                      color: Colors.black87
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
                                 child: Text(
-                                  destination.itmprice,
+                                  destination.price,
                                   style: descriptionStyle.copyWith(
                                       color: Colors.black54),
                                 ),
@@ -1207,7 +1219,7 @@ class TravelDestinationItem extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Item_Details()));
+                                    builder: (context) => Item_Details(destination)));
                           },
                           shape: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),

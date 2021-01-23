@@ -10,132 +10,76 @@ String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
   Product({
-    this.code,
-    this.meta,
-    this.data,
+    this.drugStores,
   });
 
-  int code;
-  Meta meta;
-  List<Datum> data;
+  List<DrugStore> drugStores;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    code: json["code"],
-    meta: Meta.fromJson(json["meta"]),
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+    drugStores: List<DrugStore>.from(json["DrugStores"].map((x) => DrugStore.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "code": code,
-    "meta": meta.toJson(),
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    "DrugStores": List<dynamic>.from(drugStores.map((x) => x.toJson())),
   };
 }
 
-class Datum {
-  Datum({
+class DrugStore {
+  DrugStore({
     this.id,
+    this.userId,
     this.name,
-    this.description,
-    this.image,
-    this.price,
-    this.discountAmount,
+    this.address,
+    this.nearPoint,
+    this.latitude,
+    this.longitude,
     this.status,
-    this.categories,
+    this.blocked,
+    this.createdAt,
+    this.updatedAt,
+    this.imagePath,
   });
 
   int id;
+  int userId;
   String name;
-  String description;
-  String image;
-  String price;
-  String discountAmount;
-  bool status;
-  List<Category> categories;
+  String address;
+  String nearPoint;
+  dynamic latitude;
+  dynamic longitude;
+  String status;
+  int blocked;
+  dynamic createdAt;
+  dynamic updatedAt;
+  String imagePath;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory DrugStore.fromJson(Map<String, dynamic> json) => DrugStore(
     id: json["id"],
+    userId: json["user_id"],
     name: json["name"],
-    description: json["description"],
-    image: json["image"],
-    price: json["price"],
-    discountAmount: json["discount_amount"],
+    address: json["address"],
+    nearPoint: json["nearPoint"],
+    latitude: json["latitude"],
+    longitude: json["longitude"],
     status: json["status"],
-    categories: List<Category>.from(json["categories"].map((x) => Category.fromJson(x))),
+    blocked: json["blocked"],
+    createdAt: json["created_at"],
+    updatedAt: json["updated_at"],
+    imagePath: json["image_path"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
+    "user_id": userId,
     "name": name,
-    "description": description,
-    "image": image,
-    "price": price,
-    "discount_amount": discountAmount,
+    "address": address,
+    "nearPoint": nearPoint,
+    "latitude": latitude,
+    "longitude": longitude,
     "status": status,
-    "categories": List<dynamic>.from(categories.map((x) => x.toJson())),
-  };
-}
-
-class Category {
-  Category({
-    this.id,
-    this.name,
-  });
-
-  int id;
-  String name;
-
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-    id: json["id"],
-    name: json["name"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-  };
-}
-
-class Meta {
-  Meta({
-    this.pagination,
-  });
-
-  Pagination pagination;
-
-  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-    pagination: Pagination.fromJson(json["pagination"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "pagination": pagination.toJson(),
-  };
-}
-
-class Pagination {
-  Pagination({
-    this.total,
-    this.pages,
-    this.page,
-    this.limit,
-  });
-
-  int total;
-  int pages;
-  int page;
-  int limit;
-// https://www.coderzheaven.com/2019/04/30/upload-image-in-flutter-using-php/
-  factory Pagination.fromJson(Map<String, dynamic> json) => Pagination(
-    total: json["total"],
-    pages: json["pages"],
-    page: json["page"],
-    limit: json["limit"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "total": total,
-    "pages": pages,
-    "page": page,
-    "limit": limit,
+    "blocked": blocked,
+    "created_at": createdAt,
+    "updated_at": updatedAt,
+    "image_path": imagePath,
   };
 }

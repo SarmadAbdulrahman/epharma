@@ -8,6 +8,20 @@ class RegisterView extends StatelessWidget {
   final RegisterController _registerControllerController = Get.put(RegisterController());
   final _formKey = GlobalKey<FormState>();
 
+
+  List<DropdownMenuItem<String>> Items = [
+     new  DropdownMenuItem(
+      child: new Text('DragStore'),
+      value: 'DragStore',
+    ),
+
+      new  DropdownMenuItem(
+      child: new Text('Pharmacy'),
+      value: 'Pharmacy',
+      )
+
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +37,48 @@ class RegisterView extends StatelessWidget {
           key: _formKey,
           child: Column(
             children: <Widget>[
+
+            DropdownButtonFormField<String>(
+              items: Items,
+              onChanged: (v){
+                _registerControllerController.PointType=v;
+              },
+              isExpanded: true,
+              decoration: InputDecoration(
+                fillColor: Colors.grey[200],
+                filled: true,
+                hintText: 'Near Point',
+                hintStyle: GoogleFonts.exo2(
+                  fontSize: 16,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 0,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 0,
+                  ),
+                ),
+              ),
+              style: GoogleFonts.exo2(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.normal,
+              ),
+              validator: (value) =>
+              value.trim().isEmpty ? 'point type is required' : null,
+            ),
+
+              SizedBox(height: 16),
+
               TextFormField(
                 controller: _registerControllerController.UserNameTextController,
                 keyboardType: TextInputType.name,

@@ -9,7 +9,8 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   var userListData = List<Data>().obs;
-  var Products=List<Datum>().obs;
+  var Products=List<DrugStore>().obs;
+
   var item = 0.obs;
   @override
   void onInit() {
@@ -50,7 +51,7 @@ class HomeController extends GetxController {
      // print(value.body);
       Product _Product =
       Product.fromJson(json.decode(value.body));
-      Products.value =_Product.data;
+      Products.value =_Product.drugStores;
       Get.back();
     }).catchError((onError) {
       print(onError);

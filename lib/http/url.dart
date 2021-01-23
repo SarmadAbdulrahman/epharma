@@ -5,7 +5,8 @@ const url2Base = 'https://reqres.in/api/';
 const urlLogin = 'login';
 const urlRegister = 'Register';
 const urlUserList = 'users?page=1';
-const url3Base = 'https://gorest.co.in/';
+const url3Base = 'https://alansegalabpro.com/api/';
 //
 
-const products = 'public-api/products';
+const products = 'GetDragStores/';
+const itemsEnd = 'GetItems/';

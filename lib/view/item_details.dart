@@ -1,23 +1,34 @@
 
+
 import 'package:epharmalyical/view/Cart_screen.dart';
 import 'package:epharmalyical/view/checkout_screen.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
-class Item_Details extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => item_details();
-}
 
-class item_details extends State<Item_Details> {
-  String toolbarname = 'Fruiys & Vegetables';
+import 'package:get/get.dart';
+
+class Item_Details extends StatelessWidget {
+
+  // ItemController _itemController = Get.put(ItemController());
+  var  _item;
+  var toolbarname,desc,img,prc;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List list = ['12', '11'];
 
   String itemname = 'Apple';
   int item = 0;
-  String itemprice = '\$15';
+  String itemprice ;//= '\$15';
+
+  Item_Details(destination){
+    itemname=toolbarname=destination.name;
+    desc=destination.desc;
+    img=destination.imagePath;
+    itemprice=destination.price;
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -152,30 +163,32 @@ class item_details extends State<Item_Details> {
                                   Container(
                                     child: Carousel(
                                       images: [
-                                        AssetImage(
-                                          'images/apple.jpg',
+                                        NetworkImage(
+                                            img
                                           // package: destination.assetPackage,
                                         ),
-                                        AssetImage(
-                                          'images/tomato.jpg',
+
+                                        NetworkImage(
+                                            img
                                           // package: destination.assetPackage,
                                         ),
-                                        AssetImage(
-                                          'images/lemons.jpg',
+                                        NetworkImage(
+                                            img
                                           // package: destination.assetPackage,
                                         ),
-                                        AssetImage(
-                                          'images/kiwi.jpg',
+                                        NetworkImage(
+                                            img
                                           // package: destination.assetPackage,
                                         ),
-                                        AssetImage(
-                                          'images/guava.jpg',
+                                        NetworkImage(
+                                            img
                                           // package: destination.assetPackage,
                                         ),
-                                        AssetImage(
-                                          'images/grapes.jpg',
+                                        NetworkImage(
+                                            img
                                           // package: destination.assetPackage,
                                         ),
+
                                       ],
                                       boxFit: BoxFit.scaleDown,
                                       showIndicator: false,
@@ -312,8 +325,7 @@ class item_details extends State<Item_Details> {
                           ))),
                   Container(
                       padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 0.0),
-                      child: Text(
-                          "Grocery stores also offer non-perishable foods that are packaged in bottles, boxes, and cans; some also have bakeries, butchers, delis, and fresh produce. Large grocery stores that stock significant amounts of non-food products, such as clothing and household items, are called supermarkets. Some large supermarkets also include a pharmacy, and customer service, redemption, and electronics sections.",
+                      child: Text(desc,
                           maxLines: 10,
                           style: TextStyle(fontSize: 13.0, color: Colors.black38))),
                 ]))));

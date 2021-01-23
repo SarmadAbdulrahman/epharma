@@ -8,6 +8,7 @@ class RegisterController extends GetxController {
   TextEditingController emailTextController;
   TextEditingController UserNameTextController;
   TextEditingController passwordTextController;
+  String PointType;
 
 
   @override
@@ -15,6 +16,7 @@ class RegisterController extends GetxController {
     emailTextController = TextEditingController();
     UserNameTextController = TextEditingController();
     passwordTextController = TextEditingController();
+    PointType ="";
     super.onInit();
   }
 
@@ -23,6 +25,7 @@ class RegisterController extends GetxController {
 
 
   void apiRegister() async {
+  //  print(PointType);
     Get.dialog(Center(child: CircularProgressIndicator()),
         barrierDismissible: false);
     Request request = Request(url: urlRegister, body: {
@@ -34,7 +37,7 @@ class RegisterController extends GetxController {
       'latitude':'32.2',
       'longitude':'32.2',
       'nearPoint':'tsts',
-      'PointType':'DragStore',
+      'PointType':PointType,
       'email':'${emailTextController.text}@gmail.com'
     });
   //  print('${emailTextController}@gmail.com');
