@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:epharmalyical/http/request.dart';
 import 'package:epharmalyical/http/url.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class RegisterController extends GetxController {
@@ -9,6 +12,28 @@ class RegisterController extends GetxController {
   TextEditingController UserNameTextController;
   TextEditingController passwordTextController;
   String PointType;
+  File image=File("").obs as File;
+
+
+
+
+
+
+
+  Future<void> getImage() async {
+    final pickedFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+      File imagePath = File(pickedFile.path);
+      update();
+    } else {
+      print('No image selected.');
+    }
+  }
+
+
+
 
 
   @override
@@ -17,6 +42,7 @@ class RegisterController extends GetxController {
     UserNameTextController = TextEditingController();
     passwordTextController = TextEditingController();
     PointType ="";
+   // chooseImage();
     super.onInit();
   }
 

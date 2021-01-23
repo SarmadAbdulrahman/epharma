@@ -1,4 +1,5 @@
 
+import 'package:epharmalyical/view/item_view.dart';
 import 'package:epharmalyical/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ selectDestination(code)
 
      case 1 :Get.offAll(LoginView());break;
      case 2: Get.offAll(LoginView());break;
+     case 4: Get.offAll(ItemView());break;
 
 
 
@@ -41,9 +43,9 @@ Widget  MainDrawer () {
 
         ListTile(
           leading: Icon(Icons.favorite),
-          title: Text('Item 1'),
-          selected: _selectedDestination == 0,
-          onTap: () => selectDestination(0),
+          title: Text('add Item'),
+          selected: _selectedDestination == 4,
+          onTap: () => selectDestination(4),
         ),
         ListTile(
           leading: Icon(Icons.delete),
