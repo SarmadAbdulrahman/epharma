@@ -64,7 +64,7 @@ class ItemView extends GetView<RegisterController> {
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],
                   filled: true,
-                  hintText: 'User Name',
+                  hintText: 'Item name',
                   hintStyle: GoogleFonts.exo2(
                     fontSize: 16,
                     color: Colors.grey,
@@ -91,7 +91,7 @@ class ItemView extends GetView<RegisterController> {
                   fontWeight: FontWeight.normal,
                 ),
                 validator: (value) =>
-                value.trim().isEmpty ? 'user name required' : null,
+                value.trim().isEmpty ? 'item name required' : null,
               ),
               SizedBox(height: 16),
               TextFormField(
@@ -100,7 +100,7 @@ class ItemView extends GetView<RegisterController> {
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],
                   filled: true,
-                  hintText: 'Mobile',
+                  hintText: 'Price',
                   hintStyle: GoogleFonts.exo2(
                     fontSize: 16,
                     color: Colors.grey,
@@ -127,46 +127,12 @@ class ItemView extends GetView<RegisterController> {
                   fontWeight: FontWeight.normal,
                 ),
                 validator: (value) =>
-                value.trim().isEmpty ? 'Mobile required' : null,
+                value.trim().isEmpty ? 'Price required' : null,
               ),
 
               SizedBox(height: 16),
-              TextFormField(
-                controller: _registerControllerController.passwordTextController,
-                keyboardType: TextInputType.text,
-                obscureText: true,
-                decoration: InputDecoration(
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Password',
-                  hintStyle: GoogleFonts.exo2(
-                    fontSize: 16,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 0,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 0,
-                    ),
-                  ),
-                ),
-                validator: (value) =>
-                value.trim().isEmpty ? 'Password required' : null,
-                style: GoogleFonts.exo2(
-                  fontSize: 16,
-                  color: Colors.black,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
+
+
               SizedBox(height: 16),
               MaterialButton(
                   color: Colors.deepOrangeAccent,
@@ -186,7 +152,7 @@ class ItemView extends GetView<RegisterController> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      _registerControllerController.apiRegister();
+                      _registerControllerController.apiUploadItem();
                     }
                   }),
 
