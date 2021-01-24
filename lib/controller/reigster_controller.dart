@@ -27,10 +27,11 @@ class RegisterController extends GetxController {
     if (pickedFile != null) {
       image = File(pickedFile.path);
       File imagePath = File(pickedFile.path);
+      ImageSataus='selected.';
       update();
     } else {
      // print('No image selected.');
-      ImageSataus='No image selected.';
+
     }
   }
 

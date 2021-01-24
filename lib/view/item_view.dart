@@ -12,11 +12,7 @@ class ItemView extends GetView<RegisterController> {
   final RegisterController _registerControllerController = Get.put(RegisterController());
   final _formKey = GlobalKey<FormState>();
 
-
-  String base64Image;
-  File tmpFile;
-  String errMessage = 'Error Uploading Image';
-
+   //  Get.find<RegisterController>().
 
 
 
@@ -32,6 +28,10 @@ class ItemView extends GetView<RegisterController> {
           );
 
       }
+
+
+
+
 
 
 
@@ -51,7 +51,7 @@ class ItemView extends GetView<RegisterController> {
           child:   Column(
             children: <Widget>[
 
-              showImage(),
+               showImage(),
               SizedBox(height: 10),
               OutlineButton(
                 onPressed: _registerControllerController.getImage,
