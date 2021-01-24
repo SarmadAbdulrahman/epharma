@@ -12,7 +12,8 @@ class RegisterController extends GetxController {
   TextEditingController UserNameTextController;
   TextEditingController passwordTextController;
   String PointType;
-  File image=File("").obs as File;
+  String ImageSataus;
+  File image;
 
 
 
@@ -28,7 +29,8 @@ class RegisterController extends GetxController {
       File imagePath = File(pickedFile.path);
       update();
     } else {
-      print('No image selected.');
+     // print('No image selected.');
+      ImageSataus='No image selected.';
     }
   }
 

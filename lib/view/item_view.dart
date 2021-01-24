@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ItemView extends StatelessWidget {
+class ItemView extends GetView<RegisterController> {
   final RegisterController _registerControllerController = Get.put(RegisterController());
   final _formKey = GlobalKey<FormState>();
 
@@ -22,15 +22,13 @@ class ItemView extends StatelessWidget {
 
 
 
+
   Widget showImage() {
 
      // future: _registerControllerController.image,
 
           return Flexible(
-            child:Image.file(
-              _registerControllerController.image,
-              fit: BoxFit.fill,
-            ),
+            child: _registerControllerController.ImageSataus!=null?Text('uploded'):Text('no image selected')
           );
 
       }
@@ -53,7 +51,7 @@ class ItemView extends StatelessWidget {
           child:   Column(
             children: <Widget>[
 
-            showImage(),
+              showImage(),
               SizedBox(height: 10),
               OutlineButton(
                 onPressed: _registerControllerController.getImage,
