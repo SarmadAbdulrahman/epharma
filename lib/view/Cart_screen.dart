@@ -13,18 +13,13 @@ enum DialogDemoAction {
   agree,
 }
 
-
-
 class Cart_screen extends StatelessWidget {
 // ItemController
-
 
   final ItemController _itemController = Get.put(ItemController());
 
   String toolbarname = 'My Cart (4)';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-
 
   String pincode;
 
@@ -55,7 +50,6 @@ class Cart_screen extends StatelessWidget {
       assert(false);
       return null;
     }
-
 
     IconData _backIcon() {
       switch (Theme.of(context).platform) {
@@ -194,160 +188,195 @@ class Cart_screen extends StatelessWidget {
               margin: EdgeInsets.only(
                   left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
               height: hh,
-              child:Obx(()=> RefreshIndicator( child: ListView.builder(
-                  itemCount: _itemController.items.length,
-                  itemBuilder: (BuildContext cont, int ind) {
-                    return SafeArea(
-                        child: Container(
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        children: <Widget>[
-                          Obx(()=>  Container(
-                              alignment: Alignment.topLeft,
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    height: 120.0,
-                                    width: dd,
-                                    child: Card(
-                                      child: Row(
-                                        children: <Widget>[
-                                          SizedBox(
-                                              height: 110.0,
-                                              width: 100.0,
-                                              child: Image.network(
-                                                _itemController.items[ind].imagePath,
-                                                fit: BoxFit.fill,
-                                              )),
-                                          SizedBox(
-                                              height: 110.0,
-                                              child: Container(
-                                                alignment: Alignment.topLeft,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    _verticalD(),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: <Widget>[
-                                                        Text(
-                                                          _itemController.items[ind]
-                                                              .name,
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 18.0,
-                                                              color:
-                                                                  Colors.black),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    _verticalD(),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: <Widget>[
-                                                        Text(
-                                                          _itemController.items[ind]
-                                                              .price,
-                                                          style: TextStyle(
-                                                              fontSize: 15.0,
-                                                              color: Colors
-                                                                  .black54),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: <Widget>[
-                                                        IconButton(
-                                                          icon: Icon(
-                                                              _add_icon(),
-                                                              color: Colors
-                                                                  .amber
-                                                                  .shade500),
-                                                          onPressed: () {
-
-                                                            _itemController.items[ind].counter = _itemController.items[ind].counter + 1;
-
-                                                          },
-                                                        ),
-                                                        Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 2.0),
-                                                        ),
-                                                        Text(
-                                                          _itemController.items[ind].counter.toString(),
-                                                          /*     style: descriptionStyle.copyWith(
+              child: Obx(() => RefreshIndicator(
+                  child: ListView.builder(
+                      itemCount: _itemController.items.length,
+                      itemBuilder: (BuildContext cont, int ind) {
+                        return SafeArea(
+                            child: Container(
+                          alignment: Alignment.topLeft,
+                          child: Column(
+                            children: <Widget>[
+                              Obx(
+                                () => Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          height: 120.0,
+                                          width: dd,
+                                          child: Card(
+                                            child: Row(
+                                              children: <Widget>[
+                                                SizedBox(
+                                                    height: 110.0,
+                                                    width: 100.0,
+                                                    child: Image.network(
+                                                      _itemController
+                                                          .items[ind].imagePath,
+                                                      fit: BoxFit.fill,
+                                                    )),
+                                                SizedBox(
+                                                    height: 110.0,
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.topLeft,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: <Widget>[
+                                                          _verticalD(),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Text(
+                                                                _itemController
+                                                                    .items[ind]
+                                                                    .name,
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        18.0,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          _verticalD(),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Text(
+                                                                _itemController
+                                                                    .items[ind]
+                                                                    .price,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        15.0,
+                                                                    color: Colors
+                                                                        .black54),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: <Widget>[
+                                                              IconButton(
+                                                                icon: Icon(
+                                                                    _add_icon(),
+                                                                    color: Colors
+                                                                        .amber
+                                                                        .shade500),
+                                                                onPressed: () {
+                                                                  _itemController
+                                                                      .items[
+                                                                          ind]
+                                                                      .counter = _itemController
+                                                                          .items[
+                                                                              ind]
+                                                                          .counter +
+                                                                      1;
+                                                                },
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        left:
+                                                                            2.0),
+                                                              ),
+                                                              Text(
+                                                                _itemController
+                                                                    .items[ind]
+                                                                    .counter
+                                                                    .toString(),
+                                                                /*     style: descriptionStyle.copyWith(
                                                    fontSize: 20.0,
                                                    color: Colors.black87),*/
-                                                        ),
-                                                        Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  right: 2.0),
-                                                        ),
-                                                        IconButton(
-                                                          icon: Icon(
-                                                              _sub_icon(),
-                                                              color: Colors
-                                                                  .amber
-                                                                  .shade500),
-                                                          onPressed: () {
-                                                            if (_itemController.items[ind].counter < 0) {
-                                                              _itemController.items[ind].counter = _itemController.items[ind].counter + 1;
-                                                            } else {
-                                                              _itemController.items[ind].counter = _itemController.items[ind].counter - 1;
-                                                            }
-                                                          },
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      height: 110.0,
-                                      width: 50.0,
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          _itemController.items[ind].price,
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        right:
+                                                                            2.0),
+                                                              ),
+                                                              IconButton(
+                                                                icon: Icon(
+                                                                    _sub_icon(),
+                                                                    color: Colors
+                                                                        .amber
+                                                                        .shade500),
+                                                                onPressed: () {
+                                                                  if (_itemController
+                                                                          .items[
+                                                                              ind]
+                                                                          .counter <
+                                                                      0) {
+                                                                    _itemController
+                                                                        .items[
+                                                                            ind]
+                                                                        .counter = _itemController
+                                                                            .items[ind]
+                                                                            .counter +
+                                                                        1;
+                                                                  } else {
+                                                                    _itemController
+                                                                        .items[
+                                                                            ind]
+                                                                        .counter = _itemController
+                                                                            .items[ind]
+                                                                            .counter -
+                                                                        1;
+                                                                  }
+                                                                },
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ))
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                      )),
-                                ],
-                              )),
-                          )],
-                      ),
-                    ));
-                  }),
-                  onRefresh:_itemController.getData)
-              )
-
-
-          ),
+                                        SizedBox(
+                                            height: 110.0,
+                                            width: 50.0,
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                _itemController
+                                                    .items[ind].price,
+                                              ),
+                                            )),
+                                      ],
+                                    )),
+                              )
+                            ],
+                          ),
+                        ));
+                      }),
+                  onRefresh: _itemController.getData))),
           Container(
               alignment: Alignment.bottomLeft,
               height: 60.0,
