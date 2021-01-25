@@ -26,7 +26,7 @@ class Item {
 class Cart_screen extends StatelessWidget {
 // ItemController
 
-  final HomeController _homeController = Get.put(HomeController());
+
   final ItemController _itemController = Get.put(ItemController());
   List<Item> itemList = <Item>[
     Item(
@@ -233,7 +233,7 @@ class Cart_screen extends StatelessWidget {
               margin: EdgeInsets.only(
                   left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
               height: hh,
-              child: Obx(()=> ListView.builder(
+              child:Obx(()=> RefreshIndicator( child: ListView.builder(
                   itemCount: _itemController.items.length,
                   itemBuilder: (BuildContext cont, int ind) {
                     return SafeArea(
@@ -379,7 +379,12 @@ class Cart_screen extends StatelessWidget {
                           )],
                       ),
                     ));
-                  }))),
+                  }),
+                  onRefresh:_itemController.getData)
+              )
+
+
+          ),
           Container(
               alignment: Alignment.bottomLeft,
               height: 60.0,
