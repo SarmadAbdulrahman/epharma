@@ -25,7 +25,7 @@ class RegisterController extends GetxController {
 
 
   Future<void> getImage() async {
-    final pickedFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await ImagePicker.pickImage(source: ImageSource.camera);
 
     if (pickedFile != null) {
       image = File(pickedFile.path);

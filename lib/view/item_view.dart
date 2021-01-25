@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:epharmalyical/controller/login_controller.dart';
 import 'package:epharmalyical/controller/reigster_controller.dart';
+import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,6 +45,7 @@ class ItemView extends GetView<RegisterController> {
           'Add Item',
         ),
       ),
+      drawer: MainDrawer(),
       body: Container(
         padding: EdgeInsets.fromLTRB(16, 100, 16, 0),
         child:   Form(
