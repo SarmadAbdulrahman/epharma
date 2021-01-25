@@ -1,4 +1,5 @@
 import 'package:epharmalyical/controller/home_controller.dart';
+import 'package:epharmalyical/controller/item_controller.dart';
 import 'package:epharmalyical/view/Item_Screen.dart';
 import 'package:epharmalyical/view/checkout_screen.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
@@ -23,10 +24,10 @@ class Item {
 
 
 class Cart_screen extends StatelessWidget {
-
+// ItemController
 
   final HomeController _homeController = Get.put(HomeController());
-
+  final ItemController _itemController = Get.put(ItemController());
   List<Item> itemList = <Item>[
     Item(
         itemImage: 'images/grapes.jpg',
@@ -232,8 +233,8 @@ class Cart_screen extends StatelessWidget {
               margin: EdgeInsets.only(
                   left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
               height: hh,
-              child: ListView.builder(
-                  itemCount: itemList.length,
+              child: Obx(()=> ListView.builder(
+                  itemCount: _itemController.items.length,
                   itemBuilder: (BuildContext cont, int ind) {
                     return SafeArea(
                         child: Container(
@@ -253,8 +254,8 @@ class Cart_screen extends StatelessWidget {
                                           SizedBox(
                                               height: 110.0,
                                               width: 100.0,
-                                              child: Image.asset(
-                                                itemList[ind].itemImage,
+                                              child: Image.network(
+                                                _itemController.items[ind].imagePath,
                                                 fit: BoxFit.fill,
                                               )),
                                           SizedBox(
@@ -272,8 +273,8 @@ class Cart_screen extends StatelessWidget {
                                                               .start,
                                                       children: <Widget>[
                                                         Text(
-                                                          itemList[ind]
-                                                              .itemName,
+                                                          _itemController.items[ind]
+                                                              .name,
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
@@ -296,8 +297,8 @@ class Cart_screen extends StatelessWidget {
                                                               .start,
                                                       children: <Widget>[
                                                         Text(
-                                                          itemList[ind]
-                                                              .itemPrice,
+                                                          _itemController.items[ind]
+                                                              .price,
                                                           style: TextStyle(
                                                               fontSize: 15.0,
                                                               color: Colors
@@ -322,7 +323,7 @@ class Cart_screen extends StatelessWidget {
                                                                   .amber
                                                                   .shade500),
                                                           onPressed: () {
-                                                            _homeController.item = _homeController.item + 1;
+                                                            _itemController.items[ind].counter = _itemController.items[ind].counter + 1;
                                                           },
                                                         ),
                                                         Container(
@@ -331,7 +332,7 @@ class Cart_screen extends StatelessWidget {
                                                                   left: 2.0),
                                                         ),
                                                         Text(
-                                                          _homeController.item.toString(),
+                                                          _itemController.items[ind].counter.toString(),
                                                           /*     style: descriptionStyle.copyWith(
                                                    fontSize: 20.0,
                                                    color: Colors.black87),*/
@@ -348,10 +349,10 @@ class Cart_screen extends StatelessWidget {
                                                                   .amber
                                                                   .shade500),
                                                           onPressed: () {
-                                                            if (_homeController.item < 0) {
-                                                              _homeController.item = _homeController.item + 1;
+                                                            if (_itemController.items[ind].counter < 0) {
+                                                              _itemController.items[ind].counter = _itemController.items[ind].counter + 1;
                                                             } else {
-                                                              _homeController.item = _homeController.item - 1;
+                                                              _itemController.items[ind].counter = _itemController.items[ind].counter - 1;
                                                             }
                                                           },
                                                         ),
@@ -370,7 +371,7 @@ class Cart_screen extends StatelessWidget {
                                       child: Container(
                                         alignment: Alignment.center,
                                         child: Text(
-                                          itemList[ind].itemPrice,
+                                          _itemController.items[ind].price,
                                         ),
                                       )),
                                 ],
@@ -378,7 +379,7 @@ class Cart_screen extends StatelessWidget {
                           )],
                       ),
                     ));
-                  })),
+                  }))),
           Container(
               alignment: Alignment.bottomLeft,
               height: 60.0,

@@ -15,7 +15,6 @@ class RegisterController extends GetxController {
   String PointType;
   String ImageSataus;
   File image;
-
   String base64Image;
 
 

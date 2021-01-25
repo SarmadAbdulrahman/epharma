@@ -31,6 +31,7 @@ class Item {
     this.desc,
     this.dragId,
     this.catId,
+    this.counter,
     this.price,
     this.imagePath,
     this.createdAt,
@@ -41,6 +42,7 @@ class Item {
   String name;
   String desc;
   int dragId;
+  int counter;
   int catId;
   String price;
   String imagePath;
@@ -51,6 +53,7 @@ class Item {
     id: json["id"],
     name: json["name"],
     desc: json["desc"],
+    counter:0,
     dragId: json["drag_id"],
     catId: json["cat_id"],
     price: json["price"],
