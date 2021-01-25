@@ -120,13 +120,21 @@ class RegisterController extends GetxController {
     request.post().then((value) {
       if(value.statusCode==200){
 
-        print(value.body);
         Get.back();
-        Get.offNamed('/homeView');
+
+        Get.dialog(
+            Center(child:
+            AlertDialog(
+              title: new Text("Success"),
+              content: new Text("Item add Successfully"),
+            )
+
+            ));
+
+
       }
 
       else {
-        print(value.body);
         Get.back();
         Get.dialog(
             Center(child:

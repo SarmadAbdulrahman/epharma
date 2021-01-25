@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(16, 200, 16, 0),
         child: Form(
           key: _formKey,
-          child: Column(
+          child: SingleChildScrollView (child: Column(
             children: <Widget>[
               TextFormField(
                 controller: _loginController.emailTextController,
@@ -140,6 +140,6 @@ class LoginView extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }
