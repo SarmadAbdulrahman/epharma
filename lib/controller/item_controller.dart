@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 import 'dart:convert';
 
 import 'package:epharmalyical/http/request.dart';
@@ -20,20 +14,7 @@ class ItemController extends GetxController
   var items=List<Item>().obs;
 
 
-@override
-  void onInit() {
-    // _apiGetUserList();
-   // _apiProductList();
-     _apiItemsList();
-    super.onInit();
-  }
-
-
-
-
-
-
-  void _apiItemsList() async {
+  void apiItemsList() async {
     Future.delayed(
         Duration.zero,
             () => Get.dialog(Center(child: CircularProgressIndicator()),
@@ -49,6 +30,35 @@ class ItemController extends GetxController
       print(onError);
     });
   }
+
+
+
+
+
+  Future<void> getData() async {
+
+    apiItemsList();
+
+  }
+
+
+
+
+
+@override
+  void onInit() {
+    // _apiGetUserList();
+   // _apiProductList();
+    apiItemsList();
+    super.onInit();
+  }
+
+
+
+
+
+
+
 
 
 

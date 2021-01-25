@@ -173,7 +173,7 @@ class Item_Screen extends StatelessWidget {
           Container(
             // height: 500.0,
             child: Expanded(
-              child:Obx(()=> GridView.builder(
+              child:Obx(()=> RefreshIndicator( child:GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
                 itemCount: _itemController.items.length,
@@ -188,6 +188,7 @@ class Item_Screen extends StatelessWidget {
                 }
 
               ),
+                  onRefresh:_itemController.getData),
 
 
 
