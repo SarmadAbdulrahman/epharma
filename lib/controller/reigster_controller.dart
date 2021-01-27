@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:epharmalyical/http/request.dart';
 import 'package:epharmalyical/http/url.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +15,7 @@ class RegisterController extends GetxController {
   TextEditingController passwordTextController;
   String PointType;
   String ImageSataus;
-  File image;
+  File image,CompresIamge;
   String base64Image;
 
 
@@ -30,12 +31,35 @@ class RegisterController extends GetxController {
       image = File(pickedFile.path);
       File imagePath = File(pickedFile.path);
       ImageSataus='selected.';
-      base64Image = base64Encode(image.readAsBytesSync());
+      CompresIamge=  await compressFile(image);
+      base64Image = base64Encode(CompresIamge.readAsBytesSync());
       update();
     } else {
      // print('No image selected.');
 
     }
+  }
+
+
+
+
+
+  Future<File> compressFile(File file) async {
+    final filePath = file.absolute.path;
+
+    // Create output file path
+    // eg:- "Volume/VM/abcd_out.jpeg"
+    final lastIndex = filePath.lastIndexOf(new RegExp(r'.jp'));
+    final splitted = filePath.substring(0, (lastIndex));
+    final outPath = "${splitted}_out${filePath.substring(lastIndex)}";
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path, outPath,
+      quality: 5,
+    );
+
+
+
+    return result;
   }
 
 
