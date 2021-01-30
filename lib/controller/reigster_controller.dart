@@ -25,12 +25,11 @@ class RegisterController extends GetxController {
 
 
   Future<void> getImage() async {
-    final pickedFile = await ImagePicker.pickImage(source: ImageSource.camera);
+    final pickedFile = await ImagePicker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       image = File(pickedFile.path);
       File imagePath = File(pickedFile.path);
-      ImageSataus='selected.';
       CompresIamge=  await compressFile(image);
       base64Image = base64Encode(CompresIamge.readAsBytesSync());
       update();
@@ -71,7 +70,7 @@ class RegisterController extends GetxController {
     emailTextController = TextEditingController();
     UserNameTextController = TextEditingController();
     passwordTextController = TextEditingController();
-    PointType ="";
+
    // chooseImage();
     super.onInit();
   }
@@ -181,6 +180,7 @@ class RegisterController extends GetxController {
     emailTextController?.dispose();
     UserNameTextController?.dispose();
     passwordTextController?.dispose();
+    image;
     super.onClose();
   }
 

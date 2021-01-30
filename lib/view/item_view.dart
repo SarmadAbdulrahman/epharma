@@ -10,7 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ItemView extends GetView<RegisterController> {
-  final RegisterController _registerControllerController = Get.put(RegisterController());
+ // final RegisterController _registerControllerController = Get.put(RegisterController());
+  final controller = Get.put(RegisterController());
   final _formKey = GlobalKey<FormState>();
 
    //  Get.find<RegisterController>().
@@ -24,10 +25,19 @@ class ItemView extends GetView<RegisterController> {
 
      // future: _registerControllerController.image,
 
-          return Flexible(
-            child: _registerControllerController.ImageSataus!=null?Text('uploded'):Text('no image selected')
-          );
+   // print( _registerControllerController.image);
 
+
+
+  return  GetBuilder<RegisterController>(
+        builder: (_) => controller.image!=null?Image.file(controller.image):Text('choese image')
+        );
+
+    /*
+          return Flexible(
+            child: _registerControllerController.image!=null?Text('uploded'):Text('no image selected')
+          );
+*/
       }
 
 
@@ -56,12 +66,12 @@ class ItemView extends GetView<RegisterController> {
                showImage(),
               SizedBox(height: 10),
               OutlineButton(
-                onPressed: _registerControllerController.getImage,
+                onPressed: controller.getImage,
                 child: Text('Choose Image'),
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: _registerControllerController.UserNameTextController,
+                controller: controller.UserNameTextController,
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],
@@ -97,7 +107,7 @@ class ItemView extends GetView<RegisterController> {
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: _registerControllerController.emailTextController,
+                controller: controller.emailTextController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],
@@ -154,7 +164,7 @@ class ItemView extends GetView<RegisterController> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      _registerControllerController.apiUploadItem();
+                      controller.apiUploadItem();
                     }
                   }),
 
