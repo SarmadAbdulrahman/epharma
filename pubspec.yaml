@@ -30,9 +30,13 @@ dependencies:
   flutter_range_slider: "^1.0.1"
   carousel_pro: ^0.0.13
   image_picker: ^0.6.7+21
+<<<<<<< HEAD
   shared_preferences: ^0.5.12+4
   progressive_image: ^1.0.1
 
+=======
+  flutter_image_compress: ^0.7.0
+>>>>>>> 1c1c8b3507ba4d54e3a3ab6e42f6d9ef2d82a10f
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
