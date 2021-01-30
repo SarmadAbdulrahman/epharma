@@ -1,8 +1,10 @@
 
+import 'package:epharmalyical/view/home_view.dart';
 import 'package:epharmalyical/view/item_view.dart';
 import 'package:epharmalyical/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -14,7 +16,7 @@ selectDestination(code)
    {
 
      case 1 :Get.offAll(LoginView());break;
-     case 2: Get.offAll(LoginView());break;
+     case 2: Get.offAll(HomeView());break;
      case 4: Get.offAll(ItemView());break;
 
 
@@ -34,12 +36,23 @@ Widget  MainDrawer () {
       padding: EdgeInsets.zero,
       children: <Widget>[
 
-        DrawerHeader(
-          child: Text('Drawer Header'),
-          decoration: BoxDecoration(
-            color: Colors.deepOrange,
-          ),
-        ),
+    DrawerHeader(
+    margin: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image:  AssetImage('images/background-2726037_640.png'))),
+        child: Stack(children: <Widget>[
+          Positioned(
+              bottom: 12.0,
+              left: 16.0,
+              child: Text("User name",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500))),
+        ])),
 
         ListTile(
           leading: Icon(Icons.favorite),
@@ -48,10 +61,10 @@ Widget  MainDrawer () {
           onTap: () => selectDestination(4),
         ),
         ListTile(
-          leading: Icon(Icons.delete),
-          title: Text('Item 2'),
-          selected: _selectedDestination == 1,
-          onTap: () => selectDestination(1),
+          leading: Icon(Icons.home),
+          title: Text('Home'),
+          selected: _selectedDestination == 2,
+          onTap: () => selectDestination(2),
         ),
         ListTile(
           leading: Icon(Icons.label),
@@ -67,14 +80,22 @@ Widget  MainDrawer () {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            'Label',
+            'Settings',
           ),
         ),
         ListTile(
-          leading: Icon(Icons.bookmark),
-          title: Text('Item A'),
+          leading: Icon(Icons.logout),
+          title: Text('Logout'),
           selected: _selectedDestination == 3,
-          onTap: () => selectDestination(1),
+          onTap: () async{
+
+
+            var _localStorage =  await SharedPreferences.getInstance();
+            _localStorage.remove('token');
+
+            selectDestination(1);
+
+           }
         ),
       ],
     ),

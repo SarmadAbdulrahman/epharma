@@ -137,7 +137,7 @@ class ItemView extends GetView<RegisterController> {
 
               SizedBox(height: 16),
               MaterialButton(
-                  color: Colors.deepOrangeAccent,
+                  color: const Color(0xff3F1697),
                   splashColor: Colors.white,
                   height: 45,
                   minWidth: Get.width / 2,

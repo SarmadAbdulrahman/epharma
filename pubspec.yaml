@@ -30,6 +30,8 @@ dependencies:
   flutter_range_slider: "^1.0.1"
   carousel_pro: ^0.0.13
   image_picker: ^0.6.7+21
+  shared_preferences: ^0.5.12+4
+  progressive_image: ^1.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -72,6 +74,7 @@ flutter:
       - images/tomato.jpg
       - images/gro.jpg
       - images/drag1.jpg
+      - images/background-2726037_640.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

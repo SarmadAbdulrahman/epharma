@@ -15,9 +15,9 @@ void main() {
       getPages:Routar.route,
       initialRoute: '/loginView',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+       // primarySwatch:Colors.deepPurple[800],
         appBarTheme: AppBarTheme(
-          color: Colors.deepOrange,
+          color: const Color(0xff2B339B),
           textTheme: TextTheme(
             headline6: GoogleFonts.exo2(
               color: Colors.white,

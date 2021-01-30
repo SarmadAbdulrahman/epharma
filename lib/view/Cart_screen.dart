@@ -86,7 +86,7 @@ class Cart_screen extends StatelessWidget {
           },
         ),
         title: Text(toolbarname),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:  const Color(0xff2B339B),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(10.0),

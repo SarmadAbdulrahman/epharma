@@ -190,7 +190,7 @@ class RegisterView extends StatelessWidget {
               ),
               SizedBox(height: 16),
               MaterialButton(
-                  color: Colors.deepOrangeAccent,
+                  color:  const Color(0xff2B339B),
                   splashColor: Colors.white,
                   height: 45,
                   minWidth: Get.width / 2,

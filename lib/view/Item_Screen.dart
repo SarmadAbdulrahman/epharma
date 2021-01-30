@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_range_slider/flutter_range_slider.dart' as rangeSlider;
 import 'package:get/get.dart';
 import 'package:epharmalyical/model/Items.dart' as Iteami;
+import 'package:progressive_image/progressive_image.dart';
 
 
 /*
@@ -95,7 +96,7 @@ class Item_Screen extends StatelessWidget {
           },
         ),
         title: Text(toolbarname),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:  const Color(0xff2B339B),
         actions: <Widget>[
           IconButton(
             tooltip: 'Search',
@@ -1156,12 +1157,34 @@ class TravelDestinationItem extends StatelessWidget {
                       child: Stack(
                         children: <Widget>[
                           Positioned.fill(
-                            child: Image.network(
+
+
+                            child:ProgressiveImage(
+
+                              thumbnail: NetworkImage('https://i.imgur.com/eOQL4jg.jpg'),
+                              placeholder: AssetImage('images/drag1.jpg'),
+                              image:  NetworkImage(
                               destination.imagePath,
                               // package: destination.assetPackage,
-                              fit: BoxFit.fitWidth,
                             ),
-                          ),
+                              fit: BoxFit.fitWidth,
+                              height: 300,
+                              width: 500,
+                          )),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                           Container(
                             alignment: Alignment.topLeft,
                             // padding: EdgeInsets.all(5.0),
