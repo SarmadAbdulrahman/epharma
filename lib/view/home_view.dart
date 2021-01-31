@@ -733,7 +733,7 @@ class HomeView extends StatelessWidget {
               alignment: Alignment.topCenter,
               height: 400.0,
               child:Obx(()=> GridView.builder(
-                  itemCount: _homeController.Products.length,
+                  itemCount: _homeController.Gatories2.length,
                   primary: true,
                   shrinkWrap:true,
                  // physics: NeverScrollableScrollPhysics(),
@@ -747,7 +747,7 @@ class HomeView extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Item_Screen(
-                                    toolbarname: _homeController.Products[index].name,
+                                    toolbarname: _homeController.Gatories2[index].name,
                                   )));
                         },
                         child: Container(
@@ -765,8 +765,8 @@ class HomeView extends StatelessWidget {
                                       child: Stack(
                                         children: <Widget>[
                                           Positioned.fill(
-                                              child: Image.network(
-                                                _homeController.Products[index].imagePath,
+                                              child: Image.asset(
+                                                'images/back.jpg',
                                             fit: BoxFit.cover,
                                           )),
                                           Container(
@@ -789,7 +789,7 @@ class HomeView extends StatelessWidget {
                                                             )));
                                               },
                                               child: Text(
-                                                _homeController.Products[index].name,
+                                                _homeController.Gatories2[index].name,
                                                 style: TextStyle(
                                                     fontSize: 18.0,
                                                     color: Colors.white,

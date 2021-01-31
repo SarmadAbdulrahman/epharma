@@ -60,7 +60,7 @@ class ItemView extends GetView<RegisterController> {
         padding: EdgeInsets.fromLTRB(16, 100, 16, 0),
         child:   Form(
           key: _formKey,
-          child:   Column(
+          child:   SingleChildScrollView (child:Column(
             children: <Widget>[
 
                showImage(),
@@ -172,6 +172,6 @@ class ItemView extends GetView<RegisterController> {
 
         )),
       ),
-      );
+      ));
   }
 }
