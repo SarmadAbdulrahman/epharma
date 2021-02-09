@@ -97,7 +97,7 @@ class LoginView extends StatelessWidget {
               ),
               SizedBox(height: 16),
               MaterialButton(
-                  color: Colors.deepOrangeAccent,
+                  color:  const Color(0xff3F1697),
                   splashColor: Colors.white,
                   height: 45,
                   minWidth: Get.width / 2,
@@ -127,7 +127,7 @@ class LoginView extends StatelessWidget {
                     'Create Account',
                     style: GoogleFonts.exo2(
                       fontSize: 20,
-                      color: Colors.deepOrangeAccent,
+                      color:  const Color(0xff3F1697),
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -151,7 +151,7 @@ class ItemView extends GetView<RegisterController> {
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: controller.emailTextController,
+                controller: controller.PriceTextController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],

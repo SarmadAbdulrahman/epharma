@@ -11,13 +11,14 @@ import 'package:image_picker/image_picker.dart';
 
 class RegisterController extends GetxController {
   TextEditingController emailTextController;
+  TextEditingController PriceTextController;
   TextEditingController UserNameTextController;
   TextEditingController passwordTextController;
   String PointType;
   String ImageSataus;
   File image,CompresIamge;
   String base64Image;
-
+  int s;
 
 
 
@@ -26,7 +27,7 @@ class RegisterController extends GetxController {
 
   Future<void> getImage() async {
     final pickedFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-
+        s=1;
     if (pickedFile != null) {
       image = File(pickedFile.path);
       File imagePath = File(pickedFile.path);
@@ -49,7 +50,7 @@ class RegisterController extends GetxController {
 
   Future<void> getImageFromCamera() async {
     final pickedFile = await ImagePicker.pickImage(source: ImageSource.camera);
-
+    s=2;
     if (pickedFile != null) {
       image = File(pickedFile.path);
       File imagePath = File(pickedFile.path);
@@ -91,10 +92,11 @@ class RegisterController extends GetxController {
   @override
   void onInit() {
     emailTextController = TextEditingController();
+    PriceTextController = TextEditingController();
     UserNameTextController = TextEditingController();
     passwordTextController = TextEditingController();
 
-   // chooseImage();
+   // chooseImage();  PriceTextController
     super.onInit();
   }
 
@@ -157,6 +159,7 @@ class RegisterController extends GetxController {
         barrierDismissible: false);
     Request request = Request(url: StoreItem, body: {
       'price': emailTextController.text,
+      'priceIQD': PriceTextController.text,
       'name':UserNameTextController.text,
       'desc':UserNameTextController.text,
       'cat_id':'1',
@@ -168,7 +171,15 @@ class RegisterController extends GetxController {
       if(value.statusCode==200){
 
         Get.back();
-        getImageFromCamera();
+
+        if(s==2){
+          getImageFromCamera();
+        }
+        else{
+          getImage();
+
+        }
+
         Get.dialog(
             Center(child:
             AlertDialog(
