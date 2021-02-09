@@ -30,7 +30,7 @@ class ItemView extends GetView<RegisterController> {
 
 
   return  GetBuilder<RegisterController>(
-        builder: (_) => controller.image!=null?Image.file(controller.image):Text('choese image')
+        builder: (_) => controller.image!=null?Image.file(controller.image):Text('No image selected')
         );
 
     /*
@@ -67,8 +67,16 @@ class ItemView extends GetView<RegisterController> {
               SizedBox(height: 10),
               OutlineButton(
                 onPressed: controller.getImage,
-                child: Text('Choose Image'),
+                child: Text('Choose From Gallery'),
               ),
+
+              OutlineButton(
+                onPressed: controller.getImageFromCamera,
+                child: Text('Choose From Camera'),
+              ),
+
+
+              SizedBox(height: 10),
               SizedBox(height: 16),
               TextFormField(
                 controller: controller.UserNameTextController,
@@ -112,7 +120,43 @@ class ItemView extends GetView<RegisterController> {
                 decoration: InputDecoration(
                   fillColor: Colors.grey[200],
                   filled: true,
-                  hintText: 'Price',
+                  hintText: 'Price usd',
+                  hintStyle: GoogleFonts.exo2(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 0,
+                    ),
+                  ),
+                ),
+                style: GoogleFonts.exo2(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal,
+                ),
+                validator: (value) =>
+                value.trim().isEmpty ? 'Price required' : null,
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: controller.emailTextController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  hintText: 'Price IQD',
                   hintStyle: GoogleFonts.exo2(
                     fontSize: 16,
                     color: Colors.grey,

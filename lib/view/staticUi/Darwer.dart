@@ -1,4 +1,5 @@
 
+import 'package:epharmalyical/view/dashboard_veiw.dart';
 import 'package:epharmalyical/view/home_view.dart';
 import 'package:epharmalyical/view/item_view.dart';
 import 'package:epharmalyical/view/login_view.dart';
@@ -17,7 +18,9 @@ selectDestination(code)
 
      case 1 :Get.offAll(LoginView());break;
      case 2: Get.offAll(HomeView());break;
+     case 3: Get.offAll(DashboardView());break;
      case 4: Get.offAll(ItemView());break;
+
 
 
 
@@ -64,7 +67,26 @@ Widget  MainDrawer () {
           leading: Icon(Icons.home),
           title: Text('Home'),
           selected: _selectedDestination == 2,
-          onTap: () => selectDestination(2),
+          onTap: () async {
+
+
+
+
+            var _localStorage =  await SharedPreferences.getInstance();
+            _localStorage.get('Role');
+
+
+            if(_localStorage.get('Role')=="DragStore"){
+              selectDestination(3);
+            }
+            else{
+              selectDestination(2);
+
+            }
+
+
+
+          },
         ),
         ListTile(
           leading: Icon(Icons.label),

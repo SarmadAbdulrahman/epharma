@@ -36,8 +36,19 @@ class LoginController extends GetxController {
 
      if (token!=null){
 
+       var Role=_localStorage.get('Role');
+       if(Role=="DragStore"){
 
-       Get.offNamed('/homeView');
+         Get.offNamed('/DashboardView');
+
+       }
+
+       else {
+
+         Get.offNamed('/homeView');
+       }
+
+
 
 
      }
@@ -59,8 +70,24 @@ class LoginController extends GetxController {
 
       //  print();
         _localStorage.setString('token',jsonDecode(value.body)["token"]);
+        _localStorage.setString('Role',jsonDecode(value.body)["Role"]);
         Get.back();
-        Get.offNamed('/homeView');
+
+
+        var Role=_localStorage.get('Role');
+        if(Role=="DragStore"){
+
+          Get.offNamed('/DashboardView');
+
+        }
+
+        else {
+
+          Get.offNamed('/homeView');
+        }
+
+
+
       }
 
       else {

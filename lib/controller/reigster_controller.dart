@@ -21,7 +21,7 @@ class RegisterController extends GetxController {
 
 
 
-
+  // getImageFromCamera
 
 
   Future<void> getImage() async {
@@ -43,6 +43,29 @@ class RegisterController extends GetxController {
 
 
 
+
+
+
+
+  Future<void> getImageFromCamera() async {
+    final pickedFile = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+      File imagePath = File(pickedFile.path);
+      CompresIamge=  await compressFile(image);
+      base64Image = base64Encode(CompresIamge.readAsBytesSync());
+      update();
+    } else {
+      // print('No image selected.');
+
+    }
+  }
+
+
+
+
+
   Future<File> compressFile(File file) async {
     final filePath = file.absolute.path;
 
@@ -53,7 +76,7 @@ class RegisterController extends GetxController {
     final outPath = "${splitted}_out${filePath.substring(lastIndex)}";
     var result = await FlutterImageCompress.compressAndGetFile(
       file.absolute.path, outPath,
-      quality: 5,
+      quality: 25,
     );
 
 
@@ -100,6 +123,8 @@ class RegisterController extends GetxController {
       if(value.statusCode==200){
 
         Get.back();
+
+
         Get.offNamed('/homeView');
       }
 
@@ -143,7 +168,7 @@ class RegisterController extends GetxController {
       if(value.statusCode==200){
 
         Get.back();
-
+        getImageFromCamera();
         Get.dialog(
             Center(child:
             AlertDialog(
@@ -152,6 +177,9 @@ class RegisterController extends GetxController {
             )
 
             ));
+
+
+
 
 
       }

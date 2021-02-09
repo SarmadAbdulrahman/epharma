@@ -1,3 +1,4 @@
+import 'package:epharmalyical/view/dashboard_veiw.dart';
 import 'package:epharmalyical/view/home_view.dart';
 import 'package:epharmalyical/view/login_view.dart';
 import 'package:get/get.dart';
@@ -14,5 +15,12 @@ class Routar {
       name: '/homeView',
       page: () => HomeView(),
     ),
+
+    GetPage(
+      name: '/DashboardView',
+      page: () => DashboardView(),
+    ),
+
+
   ];
 }
