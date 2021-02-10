@@ -214,6 +214,75 @@ class RegisterController extends GetxController {
 
 
 
+
+
+
+
+  void apiupdateItem(id) async {
+   // print(id);
+    //  print(PointType);
+    Get.dialog(Center(child: CircularProgressIndicator()),
+        barrierDismissible: false);
+    Request request = Request(url: UpdateItem, body: {
+      'price': emailTextController.text,
+      'priceIQD': PriceTextController.text,
+      'name':UserNameTextController.text,
+      'code': id.toString(),
+     // 'desc':UserNameTextController.text,
+
+    });
+      print(request.body);
+    print(request.url);
+    request.post().then((value) {
+      if(value.statusCode==200){
+
+        Get.back();
+
+      /*
+
+      if(s==2){
+          getImageFromCamera();
+        }
+        else{
+          getImage();
+
+        }
+*/
+        Get.dialog(
+            Center(child:
+            AlertDialog(
+              title: new Text("Success"),
+              content: new Text("Item has been updated"),
+            )
+
+            ));
+
+
+
+
+
+      }
+
+      else {
+        Get.back();
+        Get.dialog(
+            Center(child:
+            AlertDialog(
+              title: new Text("Warring"),
+              content: new Text("please re-check again"),
+            )
+
+            ));
+
+      }
+
+    }).catchError((onError) {
+
+      print(onError);
+    });
+  }
+
+
   @override
   void onClose() {
     emailTextController?.dispose();

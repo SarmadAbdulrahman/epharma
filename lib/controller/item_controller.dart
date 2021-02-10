@@ -22,7 +22,6 @@ class ItemController extends GetxController
 
     Request request = Request(url: itemsEnd, body: null);
     request.get().then((value) {
-      // print(value.body);
       Items _Product = Items.fromJson(json.decode(value.body));
       items.value =_Product.items;
       Get.back();

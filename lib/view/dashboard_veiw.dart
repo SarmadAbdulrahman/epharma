@@ -98,31 +98,23 @@ Card makeDashboardItem(String title, IconData icon,int pageCode) {
 
 class DashboardView extends StatelessWidget {
   // final LoginController _loginController = Get.find();
-
-  List list = ['12', '11'];
-
-
-
-
-
-
-
-//  final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
-  static const double height = 366.0;
-  String name = 'My Wishlist';
-
-  final HomeController _homeController = Get.put(HomeController());
+// final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
+ // static const double height = 366.0;
+ // String name = 'My Wishlist';
+  //final HomeController _homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
     //print(_loginController.emailTextController.text);
 
-    final Orientation orientation = MediaQuery.of(context).orientation;
+ /*   final Orientation orientation = MediaQuery.of(context).orientation;
     final ThemeData theme = Theme.of(context);
     final TextStyle titleStyle =
     theme.textTheme.headline.copyWith(color: Colors.black54);
     final TextStyle descriptionStyle = theme.textTheme.subhead;
     ShapeBorder shapeBorder;
+
+    */
 
     return Scaffold(
       backgroundColor: Colors.white,
