@@ -1,10 +1,14 @@
 import 'package:epharmalyical/controller/home_controller.dart';
 import 'package:epharmalyical/controller/login_controller.dart';
 import 'package:epharmalyical/view/Item_Screen.dart';
+import 'package:epharmalyical/view/balance_view.dart';
 import 'package:epharmalyical/view/home_view.dart';
 import 'package:epharmalyical/view/item_view.dart';
 import 'package:epharmalyical/view/items_dashboard.dart';
 import 'package:epharmalyical/view/login_view.dart';
+import 'package:epharmalyical/view/marketing_view.dart';
+import 'package:epharmalyical/view/order_view.dart';
+import 'package:epharmalyical/view/pending_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +36,7 @@ class Photo {
 
 
 
-Card makeDashboardItem(String title, IconData icon,int pageCode) {
+Card makeDashboardItem(String title, IconData icon,int pageCode,context) {
   return Card(
       elevation: 1.0,
       margin: new EdgeInsets.all(8.0),
@@ -49,10 +53,14 @@ Card makeDashboardItem(String title, IconData icon,int pageCode) {
 
 
 
-              case 1 :Get.offAll(LoginView());break;
-              case 2: Get.offAll(ItemsDashboard());break;
-              case 3: Get.offAll(DashboardView());break;
-              case 4: Get.offAll(ItemView());break;
+            //  case 1 :Get.offAll(BalanceView());break;
+              case 2:  Navigator.push(context,MaterialPageRoute(builder: (context) => ItemsDashboard()));break;
+              case 3:  Navigator.push(context,MaterialPageRoute(builder: (context) => OrderView()));break;
+              case 4:  Navigator.push(context,MaterialPageRoute(builder: (context) => ItemView()));break;
+              case 5:  Navigator.push(context,MaterialPageRoute(builder: (context) => MarketingView()));break;
+              case 6:  Navigator.push(context,MaterialPageRoute(builder: (context) => PendingView()));break;
+              case 1 : Navigator.push(context,MaterialPageRoute(builder: (context) => BalanceView()));break;
+              //            Navigator.push(context,MaterialPageRoute(builder: (context) => dashborad_Item_Details(_itemController.items[index])));
 
 
 
@@ -130,12 +138,12 @@ class DashboardView extends StatelessWidget {
           crossAxisCount: 2,
           padding: EdgeInsets.all(3.0),
           children: <Widget>[
-            makeDashboardItem("Orders", Icons.book,1),
-            makeDashboardItem("Balacne", Icons.account_balance,1),
-            makeDashboardItem("Stock", Icons.shopping_basket,2),
-            makeDashboardItem("Markting", Icons.handyman,1),
-            makeDashboardItem("pending", Icons.alarm,1),
-            makeDashboardItem("Itmes", Icons.card_travel,2)
+            makeDashboardItem("Orders", Icons.book,3,context),
+            makeDashboardItem("Balacne", Icons.account_balance,1,context),
+            makeDashboardItem("Stock", Icons.shopping_basket,2,context),
+            makeDashboardItem("Markting", Icons.handyman,5,context),
+            makeDashboardItem("pending", Icons.alarm,6,context),
+            makeDashboardItem("Itmes", Icons.card_travel,2,context)
           ],
         ),
       ),

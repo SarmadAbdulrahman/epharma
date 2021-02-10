@@ -57,15 +57,4 @@ class ItemController extends GetxController
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 }

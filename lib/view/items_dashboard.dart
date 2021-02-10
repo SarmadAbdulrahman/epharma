@@ -19,7 +19,7 @@ class ItemsDashboard extends StatelessWidget {
       appBar: AppBar(
           title:Text("My items")
       ),
-      drawer: MainDrawer(),
+    //  drawer: MainDrawer(),
       body: Obx(()=>RefreshIndicator( child:ListView.builder(
           itemCount: _itemController.items.length,
           itemBuilder: (BuildContext context,int index){
