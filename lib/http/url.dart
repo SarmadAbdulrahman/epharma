@@ -12,7 +12,8 @@ const UpdateItem = 'UpdateItem';
 const GetGat = 'GetGat';
 const urlUserList = 'users?page=1';
 const url3Base = 'https://alansegalabpro.com/api/';
-//
+//OrdersEnd
 
 const products = 'GetDragStores/';
 const itemsEnd = 'GetItems/';
+const OrdersEnd = 'GetOrders/';

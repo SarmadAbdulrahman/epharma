@@ -3,6 +3,7 @@
 import 'package:epharmalyical/view/Cart_screen.dart';
 import 'package:epharmalyical/view/checkout_screen.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
+import 'package:epharmalyical/view/staticUi/secoundDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -74,7 +75,7 @@ class Item_Details extends StatelessWidget {
     }
 
     return Scaffold(
-        drawer: MainDrawer(),
+        drawer: secoundDrawer(),
         key: _scaffoldKey,
         appBar: AppBar(
           leading: IconButton(

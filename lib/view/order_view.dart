@@ -1,6 +1,8 @@
 import 'package:epharmalyical/controller/home_controller.dart';
 import 'package:epharmalyical/controller/login_controller.dart';
+import 'package:epharmalyical/controller/order_controller.dart';
 import 'package:epharmalyical/view/Item_Screen.dart';
+import 'package:epharmalyical/view/dashboard_item_details.dart';
 import 'package:epharmalyical/view/home_view.dart';
 import 'package:epharmalyical/view/item_view.dart';
 import 'package:epharmalyical/view/items_dashboard.dart';
@@ -33,6 +35,8 @@ class OrderView extends StatelessWidget {
   // String name = 'My Wishlist';
   //final HomeController _homeController = Get.put(HomeController());
 
+  final OrderController _orderController = Get.put(OrderController());
+
   @override
   Widget build(BuildContext context) {
     //print(_loginController.emailTextController.text);
@@ -54,24 +58,62 @@ class OrderView extends StatelessWidget {
         ),
       ),
     //  drawer: MainDrawer(),
-      body:Container(
-        margin: EdgeInsets.all(15.0),
-        child: Column(
-          children: <Widget>[
-            accountItems("Trevello App", r"+ $ 4,946.00", "28-04-16", "credit",
-                oddColour: const Color(0xFFF7F7F9)),
-            accountItems(
-                "Creative Studios", r"+ $ 5,428.00", "26-04-16", "credit"),
-            accountItems("Amazon EU", r"+ $ 746.00", "25-04-216", "Payment",
-                oddColour: const Color(0xFFF7F7F9)),
-            accountItems(
-                "Creative Studios", r"+ $ 14,526.00", "16-04-16", "Payment"),
-            accountItems(
-                "Book Hub Society", r"+ $ 2,876.00", "04-04-16", "Credit",
-                oddColour: const Color(0xFFF7F7F9)),
-          ],
-        ),
-      ),
+      body: Obx(()=>RefreshIndicator( child:ListView.builder(
+        itemCount: _orderController.orders.length,
+        itemBuilder: (BuildContext context,int index){
+          return   Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.arrow_drop_down_circle),
+                  title:  Text(_orderController.orders[index].pharmacyName.toString()),
+                  subtitle: Text(
+                    _orderController.orders[index].itemName.toString(),
+                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text( "Count  "+
+                    _orderController.orders[index].itemCount.toString(),
+                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  ),
+                ),
+                ButtonBar(
+                  alignment: MainAxisAlignment.start,
+                  children: [
+                    FlatButton(
+                      textColor: const Color(0xFF6200EE),
+                      onPressed: () {
+                        // Perform some action
+                      },
+                      child: const Text('Done'),
+                    ),
+                    FlatButton(
+                      textColor: const Color(0xFF6200EE),
+                      onPressed: () {
+                        // Perform some action
+                      },
+                      child: const Text('cancle'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        }
+    ),
+
+
+        onRefresh:_orderController.getData
+
+    )
+
+
+
+    )
+
 
 
     );

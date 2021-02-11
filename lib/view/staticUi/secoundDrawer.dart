@@ -13,22 +13,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 selectDestination(code)
 {
-   switch(code)
-   {
+  switch(code)
+  {
 
-     case 1 :Get.offAll(LoginView());break;
-     case 2: Get.offAll(HomeView());break;
-     case 3: Get.offAll(DashboardView());break;
-     case 4: Get.offAll(ItemView());break;
-
-
+    case 1 :Get.offAll(LoginView());break;
+    case 2: Get.offAll(HomeView());break;
+    case 3: Get.offAll(DashboardView());break;
+    case 4: Get.offAll(ItemView());break;
 
 
-   }
+
+
+  }
 
 }
 
-Widget  MainDrawer () {
+Widget  secoundDrawer () {
 
 
   int _selectedDestination=0;
@@ -39,31 +39,25 @@ Widget  MainDrawer () {
       padding: EdgeInsets.zero,
       children: <Widget>[
 
-    DrawerHeader(
-    margin: EdgeInsets.zero,
-        padding: EdgeInsets.zero,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image:  AssetImage('images/background-2726037_640.png'))),
-        child: Stack(children: <Widget>[
-          Positioned(
-              bottom: 12.0,
-              left: 16.0,
-              child: Text("User name",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500))),
-        ])),
+        DrawerHeader(
+            margin: EdgeInsets.zero,
+            padding: EdgeInsets.zero,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image:  AssetImage('images/background-2726037_640.png'))),
+            child: Stack(children: <Widget>[
+              Positioned(
+                  bottom: 12.0,
+                  left: 16.0,
+                  child: Text("User name",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500))),
+            ])),
 
 
-        ListTile(
-          leading: Icon(Icons.favorite),
-          title: Text('add Item'),
-          selected: _selectedDestination == 4,
-          onTap: () => selectDestination(4),
-        ),
         ListTile(
           leading: Icon(Icons.home),
           title: Text('Home'),
@@ -107,19 +101,19 @@ Widget  MainDrawer () {
           ),
         ),
         ListTile(
-          leading: Icon(Icons.logout),
-          title: Text('Logout'),
-          selected: _selectedDestination == 3,
-          onTap: () async{
+            leading: Icon(Icons.logout),
+            title: Text('Logout'),
+            selected: _selectedDestination == 3,
+            onTap: () async{
 
 
-            var _localStorage =  await SharedPreferences.getInstance();
-            _localStorage.remove('token');
-            _localStorage.remove('Role');
+              var _localStorage =  await SharedPreferences.getInstance();
+              _localStorage.remove('token');
+              _localStorage.remove('Role');
 
-            selectDestination(1);
+              selectDestination(1);
 
-           }
+            }
         ),
       ],
     ),

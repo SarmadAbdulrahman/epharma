@@ -1,6 +1,7 @@
 import 'package:epharmalyical/controller/home_controller.dart';
 import 'package:epharmalyical/controller/login_controller.dart';
 import 'package:epharmalyical/view/Item_Screen.dart';
+import 'package:epharmalyical/view/staticUi/secoundDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -407,7 +408,7 @@ class HomeView extends StatelessWidget {
           'Dashboard',
         ),
       ),
-      drawer: MainDrawer(),
+      drawer: secoundDrawer(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(children: <Widget>[
