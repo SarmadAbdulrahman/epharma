@@ -1,13 +1,7 @@
 
-
 import 'package:epharmalyical/controller/reigster_controller.dart';
-import 'package:epharmalyical/view/Cart_screen.dart';
-import 'package:epharmalyical/view/checkout_screen.dart';
-import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-
-
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -423,13 +417,6 @@ class dashborad_Item_Details extends StatelessWidget {
                           value.trim().isEmpty ? 'Price required' : null,
                         ),
                       ),
-
-
-
-
-
-
-
 
                       Padding(
                         padding: const EdgeInsets.all(8.0),
