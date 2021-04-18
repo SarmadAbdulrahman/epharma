@@ -23,22 +23,11 @@ class ItemView extends GetView<RegisterController> {
 
   Widget showImage() {
 
-     // future: _registerControllerController.image,
-
-   // print( _registerControllerController.image);
-
-
-
   return  GetBuilder<RegisterController>(
         builder: (_) => controller.image!=null?Image.file(controller.image):Text('No image selected')
         );
 
-    /*
-          return Flexible(
-            child: _registerControllerController.image!=null?Text('uploded'):Text('no image selected')
-          );
-*/
-      }
+}
 
 
 
@@ -65,12 +54,12 @@ class ItemView extends GetView<RegisterController> {
 
                showImage(),
               SizedBox(height: 10),
-              OutlineButton(
+              OutlinedButton(
                 onPressed: controller.getImage,
                 child: Text('Choose From Gallery'),
               ),
 
-              OutlineButton(
+              OutlinedButton(
                 onPressed: controller.getImageFromCamera,
                 child: Text('Choose From Camera'),
               ),

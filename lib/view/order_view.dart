@@ -161,18 +161,4 @@ class OrderView extends StatelessWidget {
       );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

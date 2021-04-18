@@ -228,6 +228,7 @@ class RegisterController extends GetxController {
       'priceIQD': PriceTextController.text,
       'name':UserNameTextController.text,
       'code': id.toString(),
+      'image_path':base64Image,
      // 'desc':UserNameTextController.text,
 
     });

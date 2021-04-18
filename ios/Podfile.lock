@@ -54,7 +54,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_image_compress: 082f8daaf6c1b0c9fe798251c750ef0ecd98d7ae
   image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
@@ -66,4 +66,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

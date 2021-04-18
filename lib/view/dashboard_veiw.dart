@@ -1,5 +1,6 @@
 import 'package:epharmalyical/controller/home_controller.dart';
 import 'package:epharmalyical/controller/login_controller.dart';
+import 'package:epharmalyical/utility/icons_new_icons.dart';
 import 'package:epharmalyical/view/Item_Screen.dart';
 import 'package:epharmalyical/view/balance_view.dart';
 import 'package:epharmalyical/view/home_view.dart';
@@ -34,9 +35,75 @@ class Photo {
 
 
 
+Widget makeDashboardItem(String title, IconData icon, int pageCode, context) {
+  return GestureDetector(
 
+      onTap: () {
+        switch (pageCode) {
+        //  case 1 :Get.offAll(BalanceView());break;
+          case 2:
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ItemsDashboard()));
+            break;
+          case 3:
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => OrderView()));
+            break;
+          case 4:
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ItemView()));
+            break;
+          case 5:
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MarketingView()));
+            break;
+          case 6:
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PendingView()));
+            break;
+          case 1:
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BalanceView()));
+            break;
+          case 9:
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => PendingView()));
+            break;
 
-Card makeDashboardItem(String title, IconData icon,int pageCode,context) {
+        }
+      },
+
+      // color:Colors.white,
+      //  elevation: 1.0,
+      //  margin: new EdgeInsets.all(8.0),
+      child: Container(
+        color:Colors.white,
+        // decoration: BoxDecoration(color: Color.fromRGBO(220, 220, 220, 1.0)),
+        //      child: new InkWell(
+        child: Column(
+          //  crossAxisAlignment: CrossAxisAlignment.stretch,
+          //  mainAxisSize: MainAxisSize.min,
+          verticalDirection: VerticalDirection.down,
+          children: <Widget>[
+            //  SizedBox(height: 50.0),
+            Center(
+                child: Icon(
+                  icon,
+                  size: 45.0,
+                  color: Colors.blueAccent,
+                )),
+            //  SizedBox(height: 50.0),
+            new Center(
+              child: new Text(title,
+                  style: new TextStyle(fontSize: 18.0, color: Colors.black)),
+            )
+          ],
+        ),
+        //    ),
+      ));
+}
+
+Card makeDashboardItemOld(String title, IconData icon,int pageCode,context) {
   return Card(
       elevation: 1.0,
       margin: new EdgeInsets.all(8.0),
@@ -122,17 +189,14 @@ class DashboardView extends StatelessWidget {
     final TextStyle descriptionStyle = theme.textTheme.subhead;
     ShapeBorder shapeBorder;
 
-    */
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(
-          'Dashboard',
-        ),
-      ),
-      drawer: MainDrawer(),
-      body:Container(
+
+
+
+
+    ////
+
+     body:Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
         child: GridView.count(
           crossAxisCount: 2,
@@ -147,6 +211,50 @@ class DashboardView extends StatelessWidget {
           ],
         ),
       ),
+
+
+
+
+
+
+
+    */
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(
+          'Dashboard',
+        ),
+      ),
+      drawer: MainDrawer(),
+
+      body: Container(
+        //  padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 20.0),
+          child: Stack(children: [
+            Positioned(
+              // top:10,
+                height: 5,
+                width: Get.width,
+                child: Container(height: 5,color: const Color(0xffE9912A),
+                )),
+            Positioned.fill(
+                top:Get.height*0.10,
+                child:GridView.count(crossAxisCount: 3,
+                  children: <Widget>[
+
+                    makeDashboardItem("Items", IconsNew.gift, 2, context),
+                    makeDashboardItem("Balacne",IconsNew.wallet, 1, context),
+                    makeDashboardItem("Rejected", IconsNew.cancel_circled2, 5, context),
+                    makeDashboardItem("pending",IconsNew.stopwatch_20, 6, context),
+                    makeDashboardItem("Check order",IconsNew.headset, 9, context),
+
+                  ],
+                )
+            ),
+          ],
+
+          )),
 
 
     );

@@ -245,6 +245,19 @@ class dashborad_Item_Details extends StatelessWidget {
   }
 
 
+
+
+  Widget showImage() {
+
+    return  GetBuilder<RegisterController>(
+        builder: (_) => controller.image!=null?Image.file(controller.image):Text('No image selected')
+    );
+
+  }
+
+
+
+
   Edit(BuildContext context,_formKey,currentItemId) {
     return showDialog(
         context: context,
@@ -252,7 +265,7 @@ class dashborad_Item_Details extends StatelessWidget {
 
           return AlertDialog(
               content: Stack(
-              overflow: Overflow.visible,
+              clipBehavior: Clip.antiAlias,
               children: <Widget>[
 
                           Positioned(right: -40.0,top: -40.0,
@@ -272,10 +285,29 @@ class dashborad_Item_Details extends StatelessWidget {
 
               Form(
                   key: _formKey,
-                  child: Column(
+                  child:  SingleChildScrollView (child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
+
+
+                      showImage(),
+                      SizedBox(height: 10),
+                      OutlinedButton(
+                        onPressed: controller.getImage,
+                        child: Text('Choose From Gallery'),
+                      ),
+
+                      OutlinedButton(
+                        onPressed: controller.getImageFromCamera,
+                        child: Text('Choose From Camera'),
+                      ),
+
+
+                      SizedBox(height: 10),
+
+
                       Padding(
+
                         padding: EdgeInsets.all(8.0),
                         child:    TextFormField(
                           controller: controller.UserNameTextController,
@@ -395,6 +427,10 @@ class dashborad_Item_Details extends StatelessWidget {
 
 
 
+
+
+
+
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child:      MaterialButton(
@@ -422,9 +458,7 @@ class dashborad_Item_Details extends StatelessWidget {
                             }),
                       )
                     ],
-                  ))
-
-
+                  )))
 
               ]));
 
