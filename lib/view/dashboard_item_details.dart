@@ -7,8 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 class dashborad_Item_Details extends StatelessWidget {
 
-  // ItemController _itemController = Get.put(ItemController());
-  var _item;
   var toolbarname, desc, img, prc;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
@@ -78,7 +76,6 @@ class dashborad_Item_Details extends StatelessWidget {
     }
 
     return Scaffold(
-      //  drawer: MainDrawer(),
         key: _scaffoldKey,
         appBar: AppBar(
             title: Text("My items")
