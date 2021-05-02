@@ -236,7 +236,12 @@ class RegisterController extends GetxController {
     print(request.url);
     request.post().then((value) {
       if(value.statusCode==200){
+        emailTextController.clear();
+        PriceTextController.clear();
+        UserNameTextController.clear();
+        image=null;
 
+      //  base64Image
         Get.back();
 
       /*
