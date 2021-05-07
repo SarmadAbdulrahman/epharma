@@ -16,4 +16,7 @@ const url3Base = 'https://alansegalabpro.com/api/';
 
 const products = 'GetDragStores/';
 const itemsEnd = 'GetItems/';
+const GetItemsBySearch = 'GetItemsBySearch/';
+
+//GetItemsBySearch
 const OrdersEnd = 'GetOrders/';

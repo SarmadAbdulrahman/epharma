@@ -55,7 +55,7 @@ Widget makeDashboardItem(String title, IconData icon, int pageCode, context) {
             break;
           case 5:
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MarketingView()));
+                MaterialPageRoute(builder: (context) => RejectedView()));
             break;
           case 6:
             Navigator.push(context,
@@ -124,7 +124,7 @@ Card makeDashboardItemOld(String title, IconData icon,int pageCode,context) {
               case 2:  Navigator.push(context,MaterialPageRoute(builder: (context) => ItemsDashboard()));break;
               case 3:  Navigator.push(context,MaterialPageRoute(builder: (context) => OrderView()));break;
               case 4:  Navigator.push(context,MaterialPageRoute(builder: (context) => ItemView()));break;
-              case 5:  Navigator.push(context,MaterialPageRoute(builder: (context) => MarketingView()));break;
+              case 5:  Navigator.push(context,MaterialPageRoute(builder: (context) => RejectedView()));break;
               case 6:  Navigator.push(context,MaterialPageRoute(builder: (context) => PendingView()));break;
               case 1 : Navigator.push(context,MaterialPageRoute(builder: (context) => BalanceView()));break;
               //            Navigator.push(context,MaterialPageRoute(builder: (context) => dashborad_Item_Details(_itemController.items[index])));

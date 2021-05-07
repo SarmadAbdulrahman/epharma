@@ -13,11 +13,32 @@ class ItemsDashboard extends StatelessWidget {
   final ItemController _itemController = Get.put(ItemController());
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title:Text("My items")
+          title:TextField(
+            onChanged:(text){
+
+              _itemController.apiSearchItems(text);
+
+             // print(text);
+            },
+            controller: _itemController.editingController,
+            decoration: InputDecoration(
+             //   fillColor: Colors.white,
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
+                labelText: "Search",
+                 hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)))),
+          ),
+
+         // Text("My items")
       ),
     //  drawer: MainDrawer(),
       body: Obx(()=>RefreshIndicator( child:ListView.builder(
