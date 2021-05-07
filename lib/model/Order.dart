@@ -30,9 +30,11 @@ class Order {
     this.status,
     this.pharmacyName,
     this.itemCount,
+    this.id
   });
 
   String itemName;
+  int id;
   String status;
   String pharmacyName;
   String itemCount;
@@ -41,7 +43,7 @@ class Order {
     itemName: json["item_name"],
     status: json["status"],
     pharmacyName: json["pharmacyName"],
-    itemCount: json["item_count"],
+    itemCount: json["item_count"], id:json["id"]
   );
 
   Map<String, dynamic> toJson() => {

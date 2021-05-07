@@ -33,6 +33,7 @@ dependencies:
   shared_preferences: ^0.5.12+4
   progressive_image: ^1.0.1
   flutter_image_compress: ^0.7.0
+  flutter_datetime_picker: ^1.5.1
 
 
   # The following adds the Cupertino Icons font to your application.

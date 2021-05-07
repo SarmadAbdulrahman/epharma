@@ -232,8 +232,7 @@ class RegisterController extends GetxController {
      // 'desc':UserNameTextController.text,
 
     });
-      print(request.body);
-    print(request.url);
+
     request.post().then((value) {
       if(value.statusCode==200){
         emailTextController.clear();
