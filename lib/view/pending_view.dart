@@ -1,5 +1,7 @@
 import 'package:epharmalyical/controller/item_controller.dart';
+import 'package:epharmalyical/controller/order_controller.dart';
 import 'package:epharmalyical/view/dashboard_item_details.dart';
+import 'package:epharmalyical/view/dashborad_Order_Details.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +12,7 @@ import 'package:get/get.dart';
 
 class PendingView extends StatelessWidget {
 
-  final ItemController _itemController = Get.put(ItemController());
+  final OrderController _orderController = Get.put(OrderController());
 
 
 
@@ -21,11 +23,11 @@ class PendingView extends StatelessWidget {
           title:TextField(
             onChanged:(text){
 
-              _itemController.apiSearchItems(text);
+              _orderController.apiSearchItems(text);
 
               // print(text);
             },
-            controller: _itemController.editingController,
+            controller: _orderController.editingController,
             decoration: InputDecoration(
               //   fillColor: Colors.white,
                 filled: true,
@@ -42,7 +44,7 @@ class PendingView extends StatelessWidget {
         ),
         //  drawer: MainDrawer(),
         body: Obx(()=>RefreshIndicator( child:ListView.builder(
-            itemCount: _itemController.items.length,
+            itemCount: _orderController.orders.length,
             itemBuilder: (BuildContext context,int index){
               return ListTile(
                   onTap: (){
@@ -51,21 +53,21 @@ class PendingView extends StatelessWidget {
 
 
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => dashborad_Item_Details(_itemController.items[index])));
+                        MaterialPageRoute(builder: (context) => dashborad_Order_Details(_orderController.orders[index])));
 
 
                   },
                   leading: Icon(Icons.local_pharmacy),
-                  trailing: Text(_itemController.items[index].price.toString(),
+                  trailing: Text(_orderController.orders[index].itemCount.toString(),
                     style: TextStyle(
                         color: Colors.green,fontSize: 15),),
-                  title:Text(_itemController.items[index].name)
+                  title:Text(_orderController.orders[index].pharmacyName)
               );
             }
         ),
 
 
-            onRefresh:_itemController.getData
+            onRefresh:_orderController.getData
 
         )
 
