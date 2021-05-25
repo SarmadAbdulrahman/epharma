@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:epharmalyical/http/request.dart';
 import 'package:epharmalyical/http/url.dart';
+import 'package:epharmalyical/view/item_view.dart';
+import 'package:epharmalyical/view/items_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
@@ -180,6 +182,7 @@ class RegisterController extends GetxController {
 
         }
 
+        Get.back();
         Get.dialog(
             Center(child:
             AlertDialog(
@@ -228,7 +231,7 @@ class RegisterController extends GetxController {
       'priceIQD': PriceTextController.text,
       'name':UserNameTextController.text,
       'code': id.toString(),
-      'image_path':base64Image,
+     // 'image_path':base64Image,
      // 'desc':UserNameTextController.text,
 
     });
@@ -240,19 +243,7 @@ class RegisterController extends GetxController {
         UserNameTextController.clear();
         image=null;
 
-      //  base64Image
-        Get.back();
 
-      /*
-
-      if(s==2){
-          getImageFromCamera();
-        }
-        else{
-          getImage();
-
-        }
-*/
         Get.dialog(
             Center(child:
             AlertDialog(
@@ -261,9 +252,67 @@ class RegisterController extends GetxController {
             )
 
             ));
+            Get.back();
+           Get.offAll(ItemsDashboard());
+         // Get.offNamed('/ItemsDashboardView');
+
+
+      }
+
+      else {
+        Get.back();
+        Get.dialog(
+            Center(child:
+            AlertDialog(
+              title: new Text("Warring"),
+              content: new Text("please re-check again"),
+            )
+
+            ));
+
+      }
+
+    }).catchError((onError) {
+
+      print(onError);
+    });
+  }
 
 
 
+
+
+  void apiupdateImage(id) async {
+    // print(base64Image);
+    //  print(PointType);
+    Get.dialog(Center(child: CircularProgressIndicator()),
+        barrierDismissible: false);
+    Request request = Request(url: UpdateItem, body: {
+      'code': id.toString(),
+       'image_path':base64Image,
+      // 'desc':UserNameTextController.text,
+
+    });
+
+    request.post().then((value) {
+      if(value.statusCode==200){
+        emailTextController.clear();
+        PriceTextController.clear();
+        UserNameTextController.clear();
+        image=null;
+
+
+        Get.dialog(
+            Center(child:
+            AlertDialog(
+              title: new Text("Success"),
+              content: new Text("iamge has been updated"),
+            )
+
+            ));
+        Get.back();
+        Get.offAll(ItemsDashboard());
+        // Get.offNamed('/ItemsDashboardView');
 
 
       }
@@ -296,14 +345,6 @@ class RegisterController extends GetxController {
     image;
     super.onClose();
   }
-
-
-
-
-
-
-
-
 
 
 

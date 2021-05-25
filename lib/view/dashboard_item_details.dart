@@ -1,5 +1,6 @@
 
 import 'package:epharmalyical/controller/reigster_controller.dart';
+import 'package:epharmalyical/view/item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:get/get.dart';
@@ -91,12 +92,18 @@ class dashborad_Item_Details extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+
+                            TextButton(onPressed:(){
+                              ImageUpdate(context,_formKey,id);
+                            }, child: Text("Change Image")),
+
                             // photo and title
                             SizedBox(
                               height: 250.0,
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: <Widget>[
+
                                   Container(
                                     child: Carousel(
                                       images: [
@@ -249,36 +256,40 @@ class dashborad_Item_Details extends StatelessWidget {
 
 
 
-  Edit(BuildContext context,_formKey,currentItemId) {
+
+
+
+
+  ImageUpdate(BuildContext context,_formKey,currentItemId) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
 
           return AlertDialog(
               content: Stack(
-              clipBehavior: Clip.antiAlias,
-              children: <Widget>[
+                  clipBehavior: Clip.antiAlias,
+                  children: <Widget>[
 
-                          Positioned(right: -40.0,top: -40.0,
-                          child:
-                          InkResponse(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                              },
-                            child: CircleAvatar(
-                              child: Icon(Icons.close),
-                              backgroundColor: Colors.red,
-                            ),
+                    Positioned(right: -40.0,top: -40.0,
+                      child:
+                      InkResponse(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: CircleAvatar(
+                          child: Icon(Icons.close),
+                          backgroundColor: Colors.red,
+                        ),
 
 
-                  ),
-                  ),
+                      ),
+                    ),
 
-              Form(
-                  key: _formKey,
-                  child:  SingleChildScrollView (child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
+                    Form(
+                        key: _formKey,
+                        child:  SingleChildScrollView (child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
 
 
                       showImage(),
@@ -297,158 +308,262 @@ class dashborad_Item_Details extends StatelessWidget {
                       SizedBox(height: 10),
 
 
-                      Padding(
 
-                        padding: EdgeInsets.all(8.0),
-                        child:    TextFormField(
-                          controller: controller.UserNameTextController,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                            fillColor: Colors.grey[200],
-                            filled: true,
-                            hintText: 'Item name',
-                            hintStyle: GoogleFonts.exo2(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 0,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 0,
-                              ),
-                            ),
-                          ),
-                          style: GoogleFonts.exo2(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                          ),
-                          validator: (value) =>
-                          value.trim().isEmpty ? 'item name required' : null,
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child:      MaterialButton(
+                                  color:  const Color(0xff3F1697),
+                                  splashColor: Colors.white,
+                                  height: 45,
+                                  minWidth: Get.width / 2,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Text(
+                                    'Update',
+                                    style: GoogleFonts.exo2(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    if (_formKey.currentState.validate()) {
+                                      // print(currentItemId);
+                                      controller.apiupdateImage(currentItemId);
+                                      //   Navigator.of(context).pop();
+
+
+                                    }
+                                  }),
+                            )
+                          ],
+                        )))
+
+                  ]));
+
+
+        }
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Edit(BuildContext context,_formKey,currentItemId) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+
+          return AlertDialog(
+              content: Stack(
+                  clipBehavior: Clip.antiAlias,
+                  children: <Widget>[
+
+                    Positioned(right: -40.0,top: -40.0,
+                      child:
+                      InkResponse(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: CircleAvatar(
+                          child: Icon(Icons.close),
+                          backgroundColor: Colors.red,
                         ),
+
+
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child:  TextFormField(
-                          controller: controller.emailTextController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            fillColor: Colors.grey[200],
-                            filled: true,
-                            hintText: 'Price usd',
-                            hintStyle: GoogleFonts.exo2(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 0,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 0,
-                              ),
-                            ),
-                          ),
-                          style: GoogleFonts.exo2(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                          ),
-                          validator: (value) =>
-                          value.trim().isEmpty ? 'Price required' : null,
-                        ),
-                      ),
+                    ),
 
+                    Form(
+                        key: _formKey,
+                        child:  SingleChildScrollView (child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
 
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child:       TextFormField(
-                          controller: controller.PriceTextController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            fillColor: Colors.grey[200],
-                            filled: true,
-                            hintText: 'Price IQD',
-                            hintStyle: GoogleFonts.exo2(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 0,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 0,
-                              ),
-                            ),
-                          ),
-                          style: GoogleFonts.exo2(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                          ),
-                          validator: (value) =>
-                          value.trim().isEmpty ? 'Price required' : null,
-                        ),
+/*
+                      showImage(),
+                      SizedBox(height: 10),
+                      OutlinedButton(
+                        onPressed: controller.getImage,
+                        child: Text('Choose From Gallery'),
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child:      MaterialButton(
-                            color:  const Color(0xff3F1697),
-                            splashColor: Colors.white,
-                            height: 45,
-                            minWidth: Get.width / 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              'Update',
-                              style: GoogleFonts.exo2(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                      OutlinedButton(
+                        onPressed: controller.getImageFromCamera,
+                        child: Text('Choose From Camera'),
+                      ),
+
+
+                      SizedBox(height: 10),
+*/
+
+                            Padding(
+
+                              padding: EdgeInsets.all(8.0),
+                              child:    TextFormField(
+                                controller: controller.UserNameTextController,
+                                keyboardType: TextInputType.name,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.grey[200],
+                                  filled: true,
+                                  hintText: 'Item name',
+                                  hintStyle: GoogleFonts.exo2(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                    ),
+                                  ),
+                                ),
+                                style: GoogleFonts.exo2(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                           //     validator: (value) => value.trim().isEmpty ? 'item name required' : null,
                               ),
                             ),
-                            onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                               // print(currentItemId);
-                               controller.apiupdateItem(currentItemId);
-                               Navigator.of(context).pop();
-                              }
-                            }),
-                      )
-                    ],
-                  )))
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child:  TextFormField(
+                                controller: controller.emailTextController,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.grey[200],
+                                  filled: true,
+                                  hintText: 'Price usd',
+                                  hintStyle: GoogleFonts.exo2(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                    ),
+                                  ),
+                                ),
+                                style: GoogleFonts.exo2(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            //    validator: (value) => value.trim().isEmpty ? 'Price required' : null,
+                              ),
+                            ),
 
-              ]));
+
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child:       TextFormField(
+                                controller: controller.PriceTextController,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.grey[200],
+                                  filled: true,
+                                  hintText: 'Price IQD',
+                                  hintStyle: GoogleFonts.exo2(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                    ),
+                                  ),
+                                ),
+                                style: GoogleFonts.exo2(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            //    validator: (value) => value.trim().isEmpty ? 'Price required' : null,
+                              ),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child:      MaterialButton(
+                                  color:  const Color(0xff3F1697),
+                                  splashColor: Colors.white,
+                                  height: 45,
+                                  minWidth: Get.width / 2,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Text(
+                                    'Update',
+                                    style: GoogleFonts.exo2(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  onPressed: () {
+
+                                    controller.apiupdateItem(currentItemId);
 
 
-    }
-);
-}
+                                    if (_formKey.currentState.validate()) {
+
+                                    }
+                                  }),
+                            )
+                          ],
+                        )))
+
+                  ]));
+
+
+        }
+    );
+  }
 
 }

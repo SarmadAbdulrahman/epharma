@@ -27,24 +27,12 @@ import 'staticUi/Darwer.dart';
 
 
 class BalanceView extends StatelessWidget {
-  // final LoginController _loginController = Get.find();
-// final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
-  // static const double height = 366.0;
-  // String name = 'My Wishlist';
+
   //final HomeController _homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
-    //print(_loginController.emailTextController.text);
 
-    /*   final Orientation orientation = MediaQuery.of(context).orientation;
-    final ThemeData theme = Theme.of(context);
-    final TextStyle titleStyle =
-    theme.textTheme.headline.copyWith(color: Colors.black54);
-    final TextStyle descriptionStyle = theme.textTheme.subhead;
-    ShapeBorder shapeBorder;
-
-    */
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -58,8 +46,9 @@ class BalanceView extends StatelessWidget {
         margin: EdgeInsets.all(15.0),
         child: Column(
           children: <Widget>[
-            accountItems("Current Balance", r"+ $ 4,946.00", "IN", "credit",
-                oddColour: const Color(0xFFF7F7F9)),
+            accountItems("Current Balance in USD", r" $ 4,946.00", "IN", "credit", oddColour: const Color(0xFFF7F7F9)),
+            accountItems("Current Balance In IQD", r"  IQD 10,946,000", "IN", "credit", oddColour: const Color(0xFFF7F7F9)),
+
           ],
         ),
       ),
@@ -108,20 +97,6 @@ class BalanceView extends StatelessWidget {
           ],
         ),
       );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
