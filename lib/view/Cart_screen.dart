@@ -18,7 +18,7 @@ class Cart_screen extends StatelessWidget {
 
   final ItemController _itemController = Get.put(ItemController());
 
-  String toolbarname = 'My Cart (4)';
+  String toolbarname = 'My Cart';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   String pincode;
@@ -110,7 +110,7 @@ class Cart_screen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-              margin: EdgeInsets.only(left: 0.0, right: 0.0, bottom: 10.0),
+              margin: EdgeInsets.only(left: 0.0, right: 0.0, bottom: 1.0),
               child: Card(
                   child: Container(
                       padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
@@ -203,13 +203,13 @@ class Cart_screen extends StatelessWidget {
                                     child: Row(
                                       children: <Widget>[
                                         Container(
-                                          height: 120.0,
+                                          height: 100.0,
                                           width: dd,
                                           child: Card(
                                             child: Row(
                                               children: <Widget>[
                                                 SizedBox(
-                                                    height: 110.0,
+                                                    height: 100.0,
                                                     width: 100.0,
                                                     child: Image.network(
                                                       _itemController
@@ -217,7 +217,7 @@ class Cart_screen extends StatelessWidget {
                                                       fit: BoxFit.fill,
                                                     )),
                                                 SizedBox(
-                                                    height: 110.0,
+                                                    height: 100.0,
                                                     child: Container(
                                                       alignment:
                                                           Alignment.topLeft,
@@ -283,20 +283,13 @@ class Cart_screen extends StatelessWidget {
                                                                     .center,
                                                             children: <Widget>[
                                                               IconButton(
-                                                                icon: Icon(
-                                                                    _add_icon(),
-                                                                    color: Colors
-                                                                        .amber
-                                                                        .shade500),
+                                                                icon: Icon(_add_icon(),color: Colors.amber.shade500),
                                                                 onPressed: () {
-                                                                  _itemController
-                                                                      .items[
-                                                                          ind]
-                                                                      .counter = _itemController
-                                                                          .items[
-                                                                              ind]
-                                                                          .counter +
-                                                                      1;
+                                                                  //_itemController.items[ind].counter = _itemController.items[ind].counter +1;
+                                                                  _itemController.AddMethod(ind);
+                                                               //   print(_itemController.items[ind].counter);
+
+
                                                                 },
                                                               ),
                                                               Container(
@@ -305,15 +298,18 @@ class Cart_screen extends StatelessWidget {
                                                                         left:
                                                                             2.0),
                                                               ),
-                                                              Text(
-                                                                _itemController
-                                                                    .items[ind]
-                                                                    .counter
-                                                                    .toString(),
-                                                                /*     style: descriptionStyle.copyWith(
-                                                   fontSize: 20.0,
-                                                   color: Colors.black87),*/
+
+
+
+
+                                                              GetBuilder<ItemController>(
+                                                                init: ItemController(),
+                                                                  builder:(_itemController)=>Text(_itemController.items[ind].counter.toString(),),
                                                               ),
+
+
+
+
                                                               Container(
                                                                 margin: EdgeInsets
                                                                     .only(
@@ -327,26 +323,19 @@ class Cart_screen extends StatelessWidget {
                                                                         .amber
                                                                         .shade500),
                                                                 onPressed: () {
-                                                                  if (_itemController
-                                                                          .items[
-                                                                              ind]
-                                                                          .counter <
-                                                                      0) {
-                                                                    _itemController
-                                                                        .items[
-                                                                            ind]
-                                                                        .counter = _itemController
-                                                                            .items[ind]
-                                                                            .counter +
-                                                                        1;
-                                                                  } else {
-                                                                    _itemController
-                                                                        .items[
-                                                                            ind]
-                                                                        .counter = _itemController
-                                                                            .items[ind]
-                                                                            .counter -
-                                                                        1;
+                                                                  if (_itemController.items[ind].counter ==0) {
+
+                                                                   // print(_itemController.items[ind].counter);
+                                                                   // _itemController.AddMethod(ind);
+
+
+                                                                  }
+                                                                  else {
+
+
+                                                                    _itemController.minMethod(ind);
+
+
                                                                   }
                                                                 },
                                                               ),
@@ -364,10 +353,16 @@ class Cart_screen extends StatelessWidget {
                                             width: 50.0,
                                             child: Container(
                                               alignment: Alignment.center,
-                                              child: Text(
-                                                _itemController
-                                                    .items[ind].price,
-                                              ),
+
+
+                                              child:GetBuilder<ItemController>(
+                                                init:ItemController(),
+                                                builder: (_itemController)=>Text(_itemController.items[ind].Totalprice,),
+
+                                              )
+
+
+                                             // Text(_itemController.items[ind].price,),
                                             )),
                                       ],
                                     )),
@@ -377,9 +372,12 @@ class Cart_screen extends StatelessWidget {
                         ));
                       }),
                   onRefresh: _itemController.getData))),
+
+
+
           Container(
               alignment: Alignment.bottomLeft,
-              height: 60.0,
+              height: 50.0,
               child: Card(
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
@@ -394,9 +392,18 @@ class Cart_screen extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '\$ 524',
+                      '\IQD 00',
                       style: TextStyle(fontSize: 17.0, color: Colors.black54),
                     ),
+
+    GetBuilder<ItemController>(
+    init:ItemController(),
+    builder:(_itemController)=>
+
+                      Text("\$"+_itemController.InvoicePice.toString(),
+                      style: TextStyle(fontSize: 17.0, color: Colors.black54),
+                    ),
+    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -430,7 +437,7 @@ class Cart_screen extends StatelessWidget {
       );
 
   _verticalD() => Container(
-        margin: EdgeInsets.only(left: 3.0, right: 0.0, top: 07.0, bottom: 0.0),
+        margin: EdgeInsets.only(left: 3.0, right: 0.0, top: 02.0, bottom: 0.0),
       );
 
   void showDemoDialog<T>({BuildContext context, Widget child}) {

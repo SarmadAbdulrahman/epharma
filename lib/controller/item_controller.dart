@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:epharmalyical/http/request.dart';
 import 'package:epharmalyical/http/url.dart';
@@ -11,6 +12,8 @@ class ItemController extends GetxController
 {
 
   var items=List<Item>().obs;
+  var counter=List<int>().obs;
+  double InvoicePice=0;
   TextEditingController editingController;
 
 
@@ -26,7 +29,7 @@ class ItemController extends GetxController
       items.value =_Product.items;
       Get.back();
     }).catchError((onError) {
-      print(onError);
+    //  print(onError);
     });
   }
 
@@ -39,6 +42,40 @@ class ItemController extends GetxController
     apiItemsList();
 
   }
+
+
+
+
+  void AddMethod(Index)  {
+
+
+
+
+    this.items[Index].counter=this.items[Index].counter+1;
+    var one = double.parse(this.items[Index].price);
+    this.items[Index].Totalprice=(one*(this.items[Index].counter)).toString();
+    var Two = double.parse(this.items[Index].Totalprice);
+    InvoicePice=this.items[Index].InvoicePice+Two;
+    update();
+
+  }
+
+
+  void minMethod(Index)  {
+
+
+
+    this.items[Index].counter=this.items[Index].counter-1;
+    var one = double.parse(this.items[Index].price);
+    this.items[Index].Totalprice=(one*(this.items[Index].counter)).toString();
+    var Two = double.parse(this.items[Index].Totalprice);
+    InvoicePice=this.items[Index].InvoicePice+Two;
+    update();
+
+
+
+  }
+
 
 
 

@@ -33,9 +33,11 @@ class Item {
     this.catId,
     this.counter,
     this.price,
+    this.Totalprice,
     this.imagePath,
     this.createdAt,
     this.updatedAt,
+    this.InvoicePice,
   });
 
   int id;
@@ -45,6 +47,8 @@ class Item {
   int counter;
   int catId;
   String price;
+  String Totalprice;
+  double InvoicePice=0;
   String imagePath;
   dynamic createdAt;
   dynamic updatedAt;
@@ -57,6 +61,7 @@ class Item {
     dragId: json["drag_id"],
     catId: json["cat_id"],
     price: json["price"],
+    Totalprice: json["price"],
     imagePath: json["image_path"],
     createdAt: json["created_at"],
     updatedAt: json["updated_at"],
