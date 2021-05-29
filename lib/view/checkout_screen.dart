@@ -4,8 +4,18 @@ import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
 
 class Checkout extends StatefulWidget {
+
+  var PassItem;
+  var TotalPrice;
+  Checkout(TotalPrice,item){
+
+    //print();
+    this.PassItem=item;
+    this.TotalPrice=TotalPrice;
+  }
+
   @override
-  State<StatefulWidget> createState() => check_out();
+  State<StatefulWidget> createState() => check_out(this.TotalPrice,this.PassItem);
 }
 
 class Item {
@@ -17,6 +27,15 @@ class Item {
 }
 
 class check_out extends State<Checkout> {
+  var PassItem;
+  var TotalPrice;
+
+  check_out(TotalPrice,passItem){
+
+  //  print(passItem.length);
+    this.PassItem=passItem;
+    this.TotalPrice=TotalPrice;
+  }
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool checkboxValueA = true;
   bool checkboxValueB = false;
@@ -482,7 +501,7 @@ class check_out extends State<Checkout> {
                   left: 12.0, top: 5.0, right: 12.0, bottom: 5.0),
               height: 170.0,
               child: ListView.builder(
-                  itemCount: itemList.length,
+                  itemCount: this.PassItem.length,
                   itemBuilder: (BuildContext cont, int ind) {
                     return SafeArea(
                         child: Column(
@@ -495,17 +514,18 @@ class check_out extends State<Checkout> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text(itemList[ind].itemName,
+
+                                  Text(PassItem[ind].name,
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.black87,
                                           fontWeight: FontWeight.bold)),
-                                  Text(itemList[ind].itemQun,
+                                  Text(PassItem[ind].counter.toString(),
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.black87,
                                           fontWeight: FontWeight.bold)),
-                                  Text(itemList[ind].itemPrice,
+                                  Text(PassItem[ind].price.toString(),
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.black87,
@@ -533,7 +553,7 @@ class check_out extends State<Checkout> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '\$ 524',
+                      '\$ '+this.TotalPrice,
                       style: TextStyle(fontSize: 17.0, color: Colors.black54),
                     ),
                     Padding(
@@ -549,7 +569,7 @@ class check_out extends State<Checkout> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Patment()));
+                                      builder: (context) => Patment(this.TotalPrice,this.PassItem)));
                             },
                             shape: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30.0),

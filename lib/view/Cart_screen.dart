@@ -13,6 +13,18 @@ enum DialogDemoAction {
   agree,
 }
 
+
+
+class Itema {
+  final String itemName;
+  final String itemQun;
+  final String itemPrice;
+
+  Itema({this.itemName, this.itemQun, this.itemPrice});
+}
+
+
+
 class Cart_screen extends StatelessWidget {
 // ItemController
 
@@ -417,7 +429,7 @@ class Cart_screen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Checkout()));
+                                      builder: (context) => Checkout(_itemController.InvoicePice.toString(),_itemController.items)));
                             },
                             shape: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30.0),

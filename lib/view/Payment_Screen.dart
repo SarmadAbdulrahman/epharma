@@ -1,20 +1,46 @@
+import 'package:epharmalyical/controller/item_controller.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+
+import 'home_view.dart';
+import 'item_details.dart';
+import 'item_view.dart';
 
 class Patment extends StatefulWidget {
+
+
+
+  var PassItem;
+  var TotalPrice;
+  Patment(TotalPrice,item){
+
+    //print();
+    this.PassItem=item;
+    this.TotalPrice=TotalPrice;
+  }
+
   @override
-  State<StatefulWidget> createState() => payment();
+  State<StatefulWidget> createState() => payment(this.TotalPrice,this.PassItem);
 }
 
-class Item {
-  final String itemName;
-  final String itemQun;
-  final String itemPrice;
 
-  Item({this.itemName, this.itemQun, this.itemPrice});
-}
+
 
 class payment extends State<Patment> {
+  final ItemController _itemController = Get.put(ItemController());
+  var PassItem;
+  var TotalPrice;
+  payment(TotalPrice,item){
+
+    //print();
+    this.PassItem=item;
+    this.TotalPrice=TotalPrice;
+  }
+
+
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool checkboxValueA = true;
   bool checkboxValueB = false;
@@ -39,14 +65,7 @@ class payment extends State<Patment> {
     });
   }
 
-  List<Item> itemList = <Item>[
-    Item(itemName: 'Black Grape', itemQun: 'Qty:1', itemPrice: '\$ 100'),
-    Item(itemName: 'Tomato', itemQun: 'Qty:3', itemPrice: '\$ 112'),
-    Item(itemName: 'Mango', itemQun: 'Qty:2', itemPrice: '\$ 105'),
-    Item(itemName: 'Capsicum', itemQun: 'Qty:1', itemPrice: '\$ 90'),
-    Item(itemName: 'Lemon', itemQun: 'Qty:2', itemPrice: '\$ 70'),
-    Item(itemName: 'Apple', itemQun: 'Qty:1', itemPrice: '\$ 50'),
-  ];
+
   String toolbarname = 'CheckOut';
 
   @override
@@ -239,7 +258,7 @@ class payment extends State<Patment> {
                                   Radio<int>(
                                       value: 0,
                                       groupValue: 0,
-                                      onChanged: handleRadioValueChanged),
+                                      onChanged: null),
                                 ],
                               )),
                           Divider(),
@@ -255,7 +274,7 @@ class payment extends State<Patment> {
                                       style: TextStyle(
                                           fontSize: 15.0, color: Colors.black)),
                                   Radio<int>(
-                                      value: 0, groupValue: 0, onChanged: null),
+                                      value: 0, groupValue: 0, onChanged: handleRadioValueChanged),
                                 ],
                               )),
                           Divider(),
@@ -280,7 +299,7 @@ class payment extends State<Patment> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '\$ 524',
+                      '\$ '+this.TotalPrice,
                       style: TextStyle(fontSize: 17.0, color: Colors.black54),
                     ),
                     Padding(
@@ -292,7 +311,10 @@ class payment extends State<Patment> {
                             child: const Text('PROCEED TO PAY'),
                             textColor: Colors.green,
                             onPressed: () {
-                              //   Navigator.push(context, MaterialPageRoute(builder: (context)=> Item_Details()));
+
+                             // print(this.PassItem[0].counter);
+                                _itemController.apiSendOrder(this.PassItem);
+                                // Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeView()));
                             },
                             shape: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30.0),

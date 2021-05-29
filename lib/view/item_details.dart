@@ -10,10 +10,20 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 import 'package:get/get.dart';
 
+
+class Item {
+  final String itemName;
+  final String itemQun;
+  final String itemPrice;
+
+  Item({this.itemName, this.itemQun, this.itemPrice});
+}
+
+
 class Item_Details extends StatelessWidget {
 
   // ItemController _itemController = Get.put(ItemController());
-  var  _item;
+  var  _item,cc;
   var toolbarname,desc,img,prc;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List list = ['12', '11'];
@@ -114,7 +124,7 @@ class Item_Details extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Checkout()));
+                                    builder: (context) => Checkout(cc,Item)));
                           }),
                       list.length == 0
                           ? Container()
