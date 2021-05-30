@@ -15,14 +15,17 @@ class Orders {
   final String itemName;
   final String itemQun;
   final String itemPrice;
+  final String itemDragId;
 
-  Orders({this.itemName, this.itemQun, this.itemPrice});
+
+  Orders({this.itemName, this.itemQun, this.itemPrice,this.itemDragId});
   Map<String, dynamic> toJson() => _ordersToJson(this);
 
   Map<String, dynamic> _ordersToJson(Orders instance) => <String, dynamic>{
     'itemName': instance.itemName,
     'itemQun': instance.itemQun,
     'itemPrice': instance.itemPrice,
+    'itemDragId': instance.itemDragId,
   };
 
 
@@ -40,6 +43,7 @@ class ItemController extends GetxController
     'itemName': instance.itemName,
     'itemQun': instance.itemQun,
     'itemPrice': instance.itemPrice,
+    'itemDragId': instance.itemDragId,
   };
 
 
@@ -153,12 +157,12 @@ class ItemController extends GetxController
     List<Orders> itemList = <Orders>[
       for(int i=1;i<cc.length;i++)
        if(cc[i].counter>=1)
-          Orders(itemName: cc[i].name, itemQun: cc[i].counter.toString(), itemPrice:cc[i].id.toString()),
+          Orders(itemName: cc[i].name, itemQun: cc[i].counter.toString(), itemPrice:cc[i].id.toString(),itemDragId:cc[i].dragId.toString()),
 
     ];
 
 
-    print("Item lenght");
+ ///   print("Item lenght");
     print(itemList.length);
     for(int z=0;z<itemList.length;z++){
 

@@ -28,12 +28,14 @@ class Order {
   Order({
     this.itemName,
     this.status,
+    this.orderType,
     this.pharmacyName,
     this.itemCount,
     this.id
   });
 
   String itemName;
+  String orderType;
   int id;
   String status;
   String pharmacyName;
@@ -42,6 +44,7 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => Order(
     itemName: json["item_name"],
     status: json["status"],
+    orderType: json["orderType"],
     pharmacyName: json["pharmacyName"],
     itemCount: json["item_count"], id:json["id"]
   );

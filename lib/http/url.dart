@@ -22,3 +22,5 @@ const GetItemsBySearch = 'GetItemsBySearch/';
 //GetItemsBySearch
 const OrdersEnd = 'GetOrders/';
 const ApproveOrder = 'ApproveOrder';
+
+const ActivatesEnd = 'GetActivates';

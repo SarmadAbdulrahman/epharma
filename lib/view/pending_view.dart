@@ -5,6 +5,7 @@ import 'package:epharmalyical/view/dashborad_Order_Details.dart';
 import 'package:epharmalyical/view/staticUi/Darwer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -47,18 +48,18 @@ class PendingView extends StatelessWidget {
             itemCount: _orderController.orders.length,
             itemBuilder: (BuildContext context,int index){
               return ListTile(
-                  onTap: (){
+                  onTap: () async {
                     // print("ssss");
                     //    dashborad_Item_Details(_itemController.items[index]);
-
-
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => dashborad_Order_Details(_orderController.orders[index])));
+                    var _localStorage =  await SharedPreferences.getInstance();
+                     _localStorage.remove('orderIds');
+                    _localStorage.setString('orderIds',_orderController.orders[index].id.toString());
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => dashborad_Order_Details(_orderController.orders[index])));
 
 
                   },
                   leading: Icon(Icons.local_pharmacy),
-                  trailing: Text(_orderController.orders[index].itemCount.toString(),
+                  trailing: Text(_orderController.orders[index].orderType.toString(),
                     style: TextStyle(
                         color: Colors.green,fontSize: 15),),
                   title:Text(_orderController.orders[index].pharmacyName)

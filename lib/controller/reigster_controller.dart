@@ -122,7 +122,7 @@ class RegisterController extends GetxController {
       'PointType':PointType,
       'email':'${emailTextController.text}@gmail.com'
     });
-  //  print('${emailTextController}@gmail.com');
+    print(request.body);
     request.post().then((value) {
       if(value.statusCode==200){
 

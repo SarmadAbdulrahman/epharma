@@ -12,23 +12,29 @@ class dashborad_Order_Details extends StatelessWidget {
   var toolbarname, desc, img, prc;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
-  final controller = Get.put(RegisterController());
 
-  final Ordercontroller = Get.put(OrderController());
+  //final Ordercontroller = Get.put(OrderController());
   List list = ['12', '11'];
 
   String itemname = 'Apple';
-  int item = 0,id;
+  int item = 0;
+
+  static int id;
   String itemprice; //= '\$15';
 
   dashborad_Order_Details(destination) {
-    itemname = toolbarname = destination.itemName;
-   desc = destination.pharmacyName;
+    itemname = toolbarname = "";
+   desc = "";
   //  img = destination.imagePath;
-    itemprice = destination.itemCount;
+    itemprice ="";
     id=destination.id;
   }
 
+ // var cc=id;
+  final _orderController = Get.put(OrderController.overloadedContructor(id));
+  final controller = Get.put(RegisterController());
+
+  //_orderController.ActivityId=id;
 
   @override
   Widget build(BuildContext context) {
@@ -86,311 +92,42 @@ class dashborad_Order_Details extends StatelessWidget {
         ),
         body: Container(
             padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-                child: Column(children: <Widget>[
+            child: Obx(()=>RefreshIndicator( child:ListView.builder(
+                                  itemCount: _orderController.activates.length,
+                                  itemBuilder: (BuildContext context,int index){
+                                    return ListTile(
+                                        onTap: (){
+                                          // print("ssss");
+                                          //    dashborad_Item_Details(_itemController.items[index]);
 
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
+                                          Edit(context,_formKey,id);
+                                       //   Navigator.push(context, MaterialPageRoute(builder: (context) => dashborad_Order_Details(_orderController.orders[index])));
+
+
+                                        },
+                                        leading: Icon(Icons.local_pharmacy),
+                                        trailing: Text(_orderController.activates[index].totalPrice.toString(),
+                                          style: TextStyle(
+                                              color: Colors.green,fontSize: 15),),
+                                        title:Row(children: [
+                                          Text(_orderController.activates[index].itemName),
+                                          Text(_orderController.activates[index].itemCount.toString())
+                                        ],)
+                                    );
+                                  }
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
+
+
+                                  onRefresh:_orderController.getOrderDetailsList
+
+                              )
 
 
 
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
-
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemname,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  itemprice,
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0, color: Colors.black54),
-                                ),
-                              ),
-                            ],
-                          ))),
 
 
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      child: DefaultTextStyle(
-                          style: descriptionStyle,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  'Requster Name',
-                                  style: descriptionStyle.copyWith(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black87),
-                                ),
-                              ),
-                            ],
-                          ))),
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 0.0),
-                      child: Text(desc,
-                          maxLines: 10,
-                          style: TextStyle(
-                              fontSize: 13.0, color: Colors.black38))),
-
-
-
+/*
 
                   Container(
                       margin: EdgeInsets.all(10.0),
@@ -432,11 +169,12 @@ class dashborad_Order_Details extends StatelessWidget {
                                   ))))),
 
                 ]
+*/
 
 
 
 
-                ))));
+                ));
   }
 
 
@@ -579,7 +317,7 @@ class dashborad_Order_Details extends StatelessWidget {
                                         minTime: DateTime(2021, 1, 1),
                                         maxTime: DateTime(2040, 12, 31),onConfirm: (date) {
                                         //  print('confirm $date');
-                                          Ordercontroller.DataTimes=date;
+                                          _orderController.DataTimes=date;
 
                                         }, currentTime: DateTime.now(), locale: LocaleType.en);
                                   },
@@ -619,7 +357,7 @@ class dashborad_Order_Details extends StatelessWidget {
                                     if (_formKey.currentState.validate()) {
                                       // print(currentItemId);
                                     //  controller.apiupdateItem(currentItemId);
-                                      Ordercontroller.apiApproveOrder(currentItemId.toString(),Ordercontroller.DataTimes);
+                                      _orderController.apiApproveOrder(currentItemId.toString(),_orderController.DataTimes);
                                       Navigator.of(context).pop();
                                     }
                                   }),
