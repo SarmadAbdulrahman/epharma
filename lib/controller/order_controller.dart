@@ -50,7 +50,7 @@ class OrderController extends GetxController
    // print(cc);
     var _localStorage =  await SharedPreferences.getInstance();
    var cc= _localStorage.get('orderIds');
-    print(cc);
+  //  print(cc);
     Future.delayed(
         Duration.zero,
             () => Get.dialog(Center(child: CircularProgressIndicator()),
@@ -76,7 +76,7 @@ class OrderController extends GetxController
 
   void apiApproveOrder(currentItemId,DataTimes) async {
 
-    // print(id);
+     print(currentItemId);
     //  print(PointType);
     Get.dialog(Center(child: CircularProgressIndicator()),
         barrierDismissible: false);

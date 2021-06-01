@@ -6,6 +6,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class dashborad_Order_Details extends StatelessWidget {
 
@@ -96,11 +97,14 @@ class dashborad_Order_Details extends StatelessWidget {
                                   itemCount: _orderController.activates.length,
                                   itemBuilder: (BuildContext context,int index){
                                     return ListTile(
-                                        onTap: (){
+                                        onTap: () async {
+
+                                          var _localStorage =  await SharedPreferences.getInstance();
+                                          var cc= _localStorage.get('orderIds');
                                           // print("ssss");
                                           //    dashborad_Item_Details(_itemController.items[index]);
 
-                                          Edit(context,_formKey,id);
+                                          Edit(context,_formKey,cc);
                                        //   Navigator.push(context, MaterialPageRoute(builder: (context) => dashborad_Order_Details(_orderController.orders[index])));
 
 
